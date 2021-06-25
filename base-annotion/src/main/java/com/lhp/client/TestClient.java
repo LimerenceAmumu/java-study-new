@@ -16,6 +16,7 @@ public class TestClient {
 
     public static void main(String[] args) throws NoSuchMethodException, NoSuchFieldException {
         Class<Demo> clazz = Demo.class;
+
         //获取类上的注解
         MyAnnotation annotationOnClass = clazz.getAnnotation(MyAnnotation.class);
         System.out.println("annotation.value() = " + annotationOnClass.value());
