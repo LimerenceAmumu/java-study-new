@@ -93,8 +93,9 @@ public class StreamTest {
 
         //* (8) 找到交易额最小的交易
         Optional<Transaction> minTramsaction = transactions.stream()
-                .reduce((t1, t2) ->
-                        t1.getValue() > t2.getValue() ? t2 : t1
+                .reduce((t1, t2) -> {
+                            return t1.getValue() > t2.getValue() ? t2 : t1;
+                        }
                 );
 
         Optional<Transaction> reduce = transactions.stream()

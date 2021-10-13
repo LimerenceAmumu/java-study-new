@@ -30,5 +30,25 @@ public class RegularDemo {
 
     }
 
+    @Test
+    public void test2() {
+        Pattern compile = compile("^table(.)*");
+        Matcher matcher = compile.matcher("tableAAA");
+        boolean matches = matcher.matches();
+        System.out.println("matches = " + matches);
+
+
+    }
+
+
+    @Test
+    public void test3() {
+        Pattern compile = compile("^table");
+        Matcher matcher = compile.matcher("tablePPP");
+        boolean matches = matcher.matches();
+        System.out.println("matches = " + matches);
+
+
+    }
 
 }
