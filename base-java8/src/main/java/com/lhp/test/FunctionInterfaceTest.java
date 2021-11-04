@@ -17,16 +17,16 @@ import java.util.function.Predicate;
  * function   获取苹果归属地列表 List<Apple> -> List<String>
  */
 public class FunctionInterfaceTest {
+    static Predicate<Apple> redApple = (a) -> {
+        return "red".equals(a.getColor());
+    };
+
     public static void main(String[] args) {
 
         init();
-/*        filter(apples, (a) -> {
-            return "red".equals(a.getColor());
-        });*/
+        filter(apples, redApple);
 
-/*
-        consumer(apples,(a)-> System.out.println("a.getWeight() = " + a.getWeight()));
-*/
+        consumer(apples, (a) -> System.out.println("a.getWeight() = " + a.getWeight()));
 
         List<Integer> function = function(apples, apple ->
                 apple.getWeight()

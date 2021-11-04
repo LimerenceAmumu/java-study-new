@@ -7,10 +7,11 @@ import org.junit.Test;
 /**
  * @author Amumu
  * @create 2019/7/24 8:01
- * 获取Class对象的三种方式
+ * 获取Class对象的4种方式
  * 1.Class.forName(全类名)
  * 2.类名.class
  * 3.obj.getClass();
+ * 4.通过类加载器xxxClassLoader.loadClass()传入类路径获取:
  */
 public class DemoReflect {
     public static void main(String[] args) throws ClassNotFoundException {
@@ -32,7 +33,10 @@ public class DemoReflect {
 
     @Test
     public void test() throws ClassNotFoundException {
-        Class<?> aClass = Class.forName("com.lhp.reflect.DemoClass");
+        // Class<DemoClass> demoClassClass = DemoClass.class;//不执行静态代码块
+        Class<?> aClass = ClassLoader.getSystemClassLoader().loadClass("com.lhp.reflect.DemoClass");//不执行静态代码块
+        //Class<?> aClass = Class.forName("com.lhp.reflect.DemoClass");//执行静态代码块
+
 
     }
 
