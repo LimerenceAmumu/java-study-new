@@ -1,5 +1,6 @@
 package com.lhp.stringDemo;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import java.util.stream.Collectors;
@@ -20,6 +21,14 @@ public class StringTestClient {
         System.out.println("format = " + format);
     }
 
+    /**
+     * 补齐
+      */
+    @Test
+        public void testFill(){
+        String s = StringUtils.leftPad("33", 5, "0");
+        System.out.println("s = " + s);//00033
+    }
     /**
      * String 最大长度
      */

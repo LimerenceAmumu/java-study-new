@@ -24,6 +24,10 @@ public class TestClient {
         System.out.println("jsonObject.get(\"per\") = " + jsonObject.get("per"));
         System.out.println("jsonObject.get(\"date\") = " + jsonObject.get("date"));
 
+        Long adsa = jsonObject.getLong("adsa");
+        System.out.println("adsa = " + adsa);
+
+
     }
 
 }
