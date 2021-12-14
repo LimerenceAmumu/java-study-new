@@ -89,7 +89,7 @@ public class RegularDemo {
     //        Pattern pattern=Pattern.compile("^(([1-9]{1}\\d*)|([0]{1}))(\\.(\\d){2})?$"); // 判断小数点后2位的数字的正则表达式
 
     /**
-     *
+     * 金额
      */
     @Test
     public void testMoney() {
@@ -97,6 +97,19 @@ public class RegularDemo {
         Pattern pattern = compile(regex); // 判断小数点后2位的数字的正则表达式
 
         Matcher matcher = pattern.matcher("9595665656.00");
+        boolean matches = matcher.matches();
+        System.out.println("matches = " + matches);
+    }
+
+    /**
+     *正则判断输入字符是否是以逗号间隔
+     */
+    @Test
+    public void testList() {
+        String regex = "^\\w+(,\\w+)*$";
+        Pattern pattern = compile(regex);
+
+        Matcher matcher = pattern.matcher("asd,ddd,52,&&");
         boolean matches = matcher.matches();
         System.out.println("matches = " + matches);
     }

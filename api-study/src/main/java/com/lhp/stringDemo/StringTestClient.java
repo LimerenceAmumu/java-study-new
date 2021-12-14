@@ -11,6 +11,19 @@ import java.util.stream.Stream;
  * @create 2021/3/14 17:16
  */
 public class StringTestClient {
+
+    /**
+     *
+      */
+    @Test
+        public void testLength(){
+
+        String ss="https://standard-new-data-govern-pifow.aihuoshi.net/";
+        //https://standard-new-data-govern-pifow.aihuoshi.net/piflow-web/jwtLogin
+        //https://standard-new-data-govern-pifow-api.aihuoshi.net/piflow-web/jwtLogin
+        System.out.println(ss.length());
+        }
+
     /**
      * 替换
      */

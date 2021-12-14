@@ -30,4 +30,19 @@ public class TestClient {
 
     }
 
+
+    /**
+     *
+     */
+    @Test
+    public void testAA() {
+        String ss = "\"aa\"";
+
+        System.out.println("ss = " + ss);
+
+        String s = ss.replaceAll("\"", "");
+        System.out.println("s = " + s);
+    }
+
+
 }

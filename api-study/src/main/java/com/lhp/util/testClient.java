@@ -1,5 +1,6 @@
 package com.lhp.util;
 
+import com.alibaba.fastjson.JSONObject;
 import org.junit.Test;
 
 /**
@@ -15,5 +16,18 @@ public class testClient {
         pageUtil.setPageSize(2);
         int startIndex = pageUtil.getStartIndex();
         System.out.println("startIndex = " + startIndex);
+    }
+
+    /**
+     *
+      */
+    @Test
+        public void test66(){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("name","AMumu");
+        jsonObject.put("age","20");
+        jsonObject.put("sex","male");
+        String s = jsonObject.toString();
+        System.out.println("s = " + s);
     }
 }

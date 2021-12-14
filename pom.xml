@@ -13,6 +13,8 @@
         <module>api-study</module>
         <module>base-java8</module>
         <module>algorithm</module>
+        <module>azkzban-java</module>
+        <module>design-patterns</module>
     </modules>
     <name>java-study</name>
     <packaging>pom</packaging>
