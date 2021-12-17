@@ -1,5 +1,6 @@
 package com.lhp.stringDemo;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import java.util.stream.Collectors;
@@ -10,6 +11,19 @@ import java.util.stream.Stream;
  * @create 2021/3/14 17:16
  */
 public class StringTestClient {
+
+    /**
+     *
+      */
+    @Test
+        public void testLength(){
+
+        String ss="https://standard-new-data-govern-pifow.aihuoshi.net/";
+        //https://standard-new-data-govern-pifow.aihuoshi.net/piflow-web/jwtLogin
+        //https://standard-new-data-govern-pifow-api.aihuoshi.net/piflow-web/jwtLogin
+        System.out.println(ss.length());
+        }
+
     /**
      * 替换
      */
@@ -20,6 +34,14 @@ public class StringTestClient {
         System.out.println("format = " + format);
     }
 
+    /**
+     * 补齐
+      */
+    @Test
+        public void testFill(){
+        String s = StringUtils.leftPad("33", 5, "0");
+        System.out.println("s = " + s);//00033
+    }
     /**
      * String 最大长度
      */

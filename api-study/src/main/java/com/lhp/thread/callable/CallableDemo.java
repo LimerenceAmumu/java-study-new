@@ -1,5 +1,11 @@
 package com.lhp.thread.callable;
 
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Objects;
+import java.util.TreeSet;
 import java.util.concurrent.*;
 
 /**
@@ -41,6 +47,33 @@ public class CallableDemo {
         ExecutorService fixedThreadPool = Executors.newFixedThreadPool(3);
         Future<?> integerFuture = fixedThreadPool.submit(integerFutureTask);
 
+       String ss="ssasdas";
+   //    ss="ddd";
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                String s = ss.toString();
+
+            }
+        });
+  /*      Object ss;
+        Object s2;
+        TreeSet<Object> objects = new TreeSet<>(new Comparator<Object>(ss,s2) {
+            @Override
+            public int compare(Object o1, Object o2) {
+                return 0;
+            }
+        });*/
+    }
+
+    /**
+     *
+      */
+    @Test
+        public void test(){
+        long l = System.currentTimeMillis();
+        System.out.println("l = " + l);
 
     }
 }
