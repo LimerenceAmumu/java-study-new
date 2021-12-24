@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static java.util.Comparator.comparing;
 
@@ -49,13 +51,22 @@ public class Java8TestNew {
 
 
     }
+
     @Test
-    public void test(){
-        apples.stream().map(m->{
+    public void test() {
+        apples.stream().map(m -> {
             m.setColor("aaa");
             return m;
         });
-        apples.forEach(a-> System.out.println(a.toString()));
+        apples.forEach(a -> System.out.println(a.toString()));
 
     }
+
+    @Test
+    public void testNull() {
+        List<Object> collect = apples.stream().map(a -> null).collect(Collectors.toList());
+        System.out.println("");
+
+    }
+
 }

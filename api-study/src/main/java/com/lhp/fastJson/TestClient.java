@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @Description: fastJson
@@ -36,12 +37,10 @@ public class TestClient {
      */
     @Test
     public void testAA() {
-        String ss = "\"aa\"";
 
-        System.out.println("ss = " + ss);
+        List<JSONObject> errors = JSONObject.parseArray("[]", JSONObject.class);//把字符串转换成集合
 
-        String s = ss.replaceAll("\"", "");
-        System.out.println("s = " + s);
+        System.out.println("jsonObject = " + errors);
     }
 
 
