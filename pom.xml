@@ -12,6 +12,7 @@
         <module>base-annotion</module>
         <module>api-study</module>
         <module>base-java8</module>
+        <module>algorithm</module>
     </modules>
     <name>java-study</name>
     <packaging>pom</packaging>
@@ -19,8 +20,7 @@
     <!--统一管理jar包版本-->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>16</maven.compiler.source>
-        <maven.compiler.target>16</maven.compiler.target>
+
         <junit.version>4.12</junit.version>
         <lombok.version>1.18.20</lombok.version>
         <log4j.version>1.2.17</log4j.version>
