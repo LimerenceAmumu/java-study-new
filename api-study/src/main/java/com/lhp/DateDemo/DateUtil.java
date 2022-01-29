@@ -4,6 +4,9 @@ import org.junit.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -30,5 +33,23 @@ public class DateUtil {
         System.out.println("calendar = " + calendar);
 
     }
+
+    /**
+     * 获取近30天的日期list 字符
+     */
+    @Test
+    public void testGet30DateStr() {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        ArrayList<String> result = new ArrayList<>();
+
+        for (int i = 0; i <= 29; i++) {
+            LocalDate now = LocalDate.now();
+            LocalDate localDate = now.minusDays(i);
+            String nowStr = localDate.format(dateTimeFormatter);
+            result.add(nowStr);
+        }
+        System.out.println("result = " + result);
+    }
+
 
 }

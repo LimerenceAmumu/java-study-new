@@ -22,7 +22,7 @@ public class TouXiang {
      **/
     public static void main(String[] args) throws IOException {
         String name = "迪丽热巴";
-        generateImg(name, "C:\\Users\\Limer\\Desktop", name);
+        generateImg(name, TouXiang.class.getResource("/").getPath(), name);
     }
 
     /**
@@ -126,10 +126,11 @@ public class TouXiang {
         String regEx = "[\\u4e00-\\u9fa5]+";
         Pattern p = Pattern.compile(regEx);
         Matcher m = p.matcher(str);
-        if (m.find())
+        if (m.find()) {
             return true;
-        else
+        } else {
             return false;
+        }
     }
 
     /**

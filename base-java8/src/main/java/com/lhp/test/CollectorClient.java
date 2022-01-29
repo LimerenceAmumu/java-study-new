@@ -39,6 +39,7 @@ public class CollectorClient {
         Trader brian = new Trader("Brian", "Cambridge");
         //订单
         transactions = Arrays.asList(
+
                 new Transaction(brian, 2011, 300),
                 new Transaction(raoul, 2012, 1000),
                 new Transaction(raoul, 2011, 400),

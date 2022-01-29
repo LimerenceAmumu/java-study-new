@@ -2,9 +2,11 @@ package com.lhp.frameworks.easyexcel.util;
 
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
+import lombok.SneakyThrows;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class ExcelListener<T> extends AnalysisEventListener<T> {
     /**
@@ -17,9 +19,13 @@ public class ExcelListener<T> extends AnalysisEventListener<T> {
      * @param object
      * @param context
      */
+    @SneakyThrows
     @Override
     public void invoke(T object, AnalysisContext context) {
         rows.add(object);
+        System.out.println("Thread.currentThread().getName() = " + Thread.currentThread().getName());
+        TimeUnit.SECONDS.sleep(1);
+
     }
 
     @Override
