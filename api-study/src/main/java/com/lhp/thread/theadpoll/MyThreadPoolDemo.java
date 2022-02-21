@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class MyThreadPoolDemo {
     public static void main(String[] args) {
+
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
                 2,
                 3,
@@ -30,11 +31,17 @@ public class MyThreadPoolDemo {
                 //new ThreadPoolExecutor.DiscardPolicy()
                 new ThreadPoolExecutor.AbortPolicy()
         );
+
         try {
             //模拟十个任务 需要开启10个线程
             for (int i = 0; i < 10; i++) {
                 threadPoolExecutor.execute(() -> {
                     System.out.println(Thread.currentThread().getName() + "处理中---");
+                    try {
+                        TimeUnit.SECONDS.sleep(20);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 });
             }
         } catch (Exception e) {
@@ -43,8 +50,16 @@ public class MyThreadPoolDemo {
             threadPoolExecutor.shutdown();
         }
 
-        //cpu核心数  正则
+        //cpu核心数
         System.out.println(Runtime.getRuntime().availableProcessors());
 
     }
+
+    /**
+     * 理想的线程数，使用 2倍cpu核心数
+     */
+    public static int desiredThreadNum() {
+        return Runtime.getRuntime().availableProcessors() * 2;
+    }
+
 }
