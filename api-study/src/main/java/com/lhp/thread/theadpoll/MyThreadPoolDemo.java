@@ -31,7 +31,8 @@ public class MyThreadPoolDemo {
                 //new ThreadPoolExecutor.DiscardPolicy()
                 new ThreadPoolExecutor.AbortPolicy()
         );
-
+        // 设置为true的话  即便是coreThread 空闲时间超过存活时间也会回收
+        //boolean b = threadPoolExecutor.allowsCoreThreadTimeOut();
         try {
             //模拟十个任务 需要开启10个线程
             for (int i = 0; i < 10; i++) {
