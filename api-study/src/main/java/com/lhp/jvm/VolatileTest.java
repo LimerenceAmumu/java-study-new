@@ -6,7 +6,8 @@ package com.lhp.jvm;
  * volatile可见性
  */
 class MyData{
-    int a=0;
+//    int a=0;
+volatile int a = 0;
     void add(){
         this.a=100;
     }

@@ -65,10 +65,20 @@ public class IntStreamTest {
         stringStream.map(str -> Arrays.stream(str.split(" ")))
                 .forEach(s -> System.out.println(Arrays.toString(s.toArray())));
 
+        //flatMap 可以把 Stream 中的每个元素都映射为一个 Stream，然后再把这多个 Stream 合并为一个 Stream。
         Stream<String> ss2 = Stream.of(ss);
         //flatMap
         ss2.flatMap(str -> Arrays.stream(str.split(" ")))
                 .forEach(System.out::println);
 
+
+        //----------------------
+
+        Stream<Integer[]> s1 = Stream.of(new Integer[]{1, 2, 3}, new Integer[]{4, 5, 6}, new Integer[]{7, 8, 9});
+        s1.forEach(System.out::println);
+
+        Stream<Integer> s2 = Stream.of(new Integer[]{1, 2, 3}, new Integer[]{4, 5, 6}, new Integer[]{7, 8, 9})
+                .flatMap(i -> Arrays.stream(i));
+        s2.forEach(System.out::println);
     }
 }

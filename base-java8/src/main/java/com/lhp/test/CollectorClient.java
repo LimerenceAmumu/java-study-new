@@ -106,6 +106,8 @@ public class CollectorClient {
 
         System.out.println(collect.toString());
 
+
+        Optional<Dish> mostCalorieDish = menu.stream().collect(reducing((d1, d2) -> d1.getCalories() > d2.getCalories() ? d1 : d2));
     }
 
     //join
