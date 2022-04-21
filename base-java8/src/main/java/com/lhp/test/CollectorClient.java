@@ -1,6 +1,7 @@
 package com.lhp.test;
 
 import com.google.common.base.Strings;
+import com.google.common.base.Supplier;
 import com.lhp.bean.Dish;
 import com.lhp.bean.Trader;
 import com.lhp.bean.Transaction;
@@ -54,6 +55,11 @@ public class CollectorClient {
      */
     @Test
     public void testGroupBy() {
+        Trader raoul = new Trader("Raoul", "Cambridge");
+
+        Supplier<Transaction> transactionSupplier = () -> new Transaction(raoul, 222, 20000);
+
+
         Map<Integer, List<Transaction>> groupByYear =
                 transactions.stream().collect(groupingBy(Transaction::getYear));
         System.out.println("transactionsByCurrencies = " + groupByYear);
@@ -88,9 +94,10 @@ public class CollectorClient {
     }
 
     @Test
-    public void test22(){
+    public void test22() {
         System.out.println("Runtime.getRuntime().availableProcessors() = " + Runtime.getRuntime().availableProcessors());
     }
+
     //汇总  平均 最大最小
     @Test
     public void testSum() {

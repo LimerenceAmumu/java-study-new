@@ -17,6 +17,7 @@
         <module>design-patterns</module>
         <module>java-reactor</module>
         <module>ddl-gen</module>
+        <module>druid-sql</module>
     </modules>
     <name>java-study</name>
     <packaging>pom</packaging>

@@ -23,6 +23,7 @@ import net.sf.jsqlparser.statement.update.Update;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -69,6 +70,24 @@ public class JSqlParserUtil {
             log.error(">>>获取countSql错误:", e);
             throw new SQLException("sql解析失败!");
         }
+    }
+
+    @SneakyThrows
+    public static void main(String[] args) {
+        Select stmt = (Select) CCJSqlParserUtil
+                .parse("SELECT col1 AS a, col2 AS b, col3 AS c FROM table WHERE col1 = 10 AND col2 = 20 AND col3 = 30");
+
+        Map<String, Expression> map = new HashMap<>();
+        for (SelectItem selectItem : ((PlainSelect) stmt.getSelectBody()).getSelectItems()) {
+            selectItem.accept(new SelectItemVisitorAdapter() {
+                @Override
+                public void visit(SelectExpressionItem item) {
+                    map.put(item.getAlias().getName(), item.getExpression());
+                }
+            });
+        }
+
+        System.out.println("map " + map);
     }
 
     public static String buildPageSql(String sql, Long current, Long pageSize) {

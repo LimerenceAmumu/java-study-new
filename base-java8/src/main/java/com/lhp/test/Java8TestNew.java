@@ -19,26 +19,27 @@ public class Java8TestNew {
     ArrayList<Apple> apples = new ArrayList<>();
 
     @Before
-    public void initList(){
+    public void initList() {
 
-        apples.add(new Apple("red",150,"hn")) ;
-        apples.add(new Apple("red",150,"zz")) ;
-        apples.add(new Apple("yellow",80,"sd")) ;
-        apples.add(new Apple("black",150,"hh")) ;
-        apples.add(new Apple("green",200,"hd")) ;
-        apples.add(new Apple("orign",110,"tf")) ;
-        apples.add(new Apple("red",150,"hn")) ;
-        apples.add(new Apple("red",60,"hn")) ;
+        apples.add(new Apple("red", 150, "hn"));
+        apples.add(new Apple("red", 150, "zz"));
+        apples.add(new Apple("yellow", 80, "sd"));
+        apples.add(new Apple("black", 150, "hh"));
+        apples.add(new Apple("green", 200, "hd"));
+        apples.add(new Apple("orign", 110, "tf"));
+        apples.add(new Apple("red", 150, "hn"));
+        apples.add(new Apple("red", 60, "hn"));
     }
+
     /**
      * 比较器复合
      */
     @Test
-    public void testCompare(){
+    public void testCompare() {
 
         //根据重量逆序   lambda
-        apples.sort((a,b)->b.getWeight().compareTo(a.getWeight()));
-        apples.sort((a,b)->b.getWeight().compareTo(a.getWeight()));
+        apples.sort((a, b) -> b.getWeight().compareTo(a.getWeight()));
+        apples.sort((a, b) -> b.getWeight().compareTo(a.getWeight()));
         //加入 方法引用  正序
         apples.sort(comparing(Apple::getWeight));
         //逆序
@@ -47,7 +48,7 @@ public class Java8TestNew {
                 .reversed()
                 .thenComparing(Apple::getColor)
         );
-        apples.forEach(a-> System.out.println(a.toString()));
+        apples.forEach(a -> System.out.println(a.toString()));
 
 
     }
