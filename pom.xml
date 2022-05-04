@@ -18,6 +18,7 @@
         <module>java-reactor</module>
         <module>ddl-gen</module>
         <module>druid-sql</module>
+        <module>es-java</module>
     </modules>
     <name>java-study</name>
     <packaging>pom</packaging>

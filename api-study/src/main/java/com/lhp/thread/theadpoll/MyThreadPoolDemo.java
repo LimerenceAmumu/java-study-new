@@ -1,6 +1,7 @@
 package com.lhp.thread.theadpoll;
 
-import java.util.concurrent.Executors;
+import com.lhp.collections.juc.MyThreadFactory;
+
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -19,8 +20,8 @@ public class MyThreadPoolDemo {
                 3,
                 30L,
                 TimeUnit.SECONDS,
-                new LinkedBlockingQueue<>(3),
-                Executors.defaultThreadFactory(),
+                new LinkedBlockingQueue<>(500),
+                new MyThreadFactory(),
                 //抛异常的拒绝策略RejectedExecutionException
                 //new ThreadPoolExecutor.AbortPolicy()
                 //把任务交还给调用此线程的线程去执行

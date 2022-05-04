@@ -2,7 +2,6 @@ package com.lhp.collections;
 
 import org.junit.Test;
 
-import java.util.HashMap;
 import java.util.TreeMap;
 
 /**
@@ -12,8 +11,7 @@ import java.util.TreeMap;
 public class MapTreeMapHashmap {
     public static void main(String[] args) {
 
-        //证明hashmap的无序性，key不可重复
-        testHashMap();
+
 
 
     }
@@ -41,24 +39,15 @@ public class MapTreeMapHashmap {
     }
 
     /**
-     * 证明hashmap的无序性，key不可重复
+     * 自己的hashmap
      */
-    public static void testHashMap() {
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("A","A");
-        hashMap.put("A","B");
-        hashMap.put("A","B");
-        hashMap.put("B","B");
-        hashMap.put("D","C");
-        hashMap.put("E","C");
-        hashMap.put("F","C");
-        hashMap.put("G","C");
-        hashMap.put("a","C");
-        hashMap.put("b","C");
-        hashMap.put("c","C");
-        hashMap.put("d","C");
-        hashMap.put("e","C");
+    @Test
+    public void testHashMap() {
+        HashMap<String, String> stringStringHashMap = new HashMap<>();
 
-        System.out.println(hashMap);
+        stringStringHashMap.put("s", "ss");
+        String s = stringStringHashMap.get("s");
+        System.out.println("s = " + s);
+
     }
 }
