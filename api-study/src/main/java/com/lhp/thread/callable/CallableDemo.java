@@ -1,11 +1,5 @@
 package com.lhp.thread.callable;
 
-import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.TreeSet;
 import java.util.concurrent.*;
 
 /**
@@ -33,47 +27,15 @@ public class CallableDemo {
     public static void main(String[] args) throws ExecutionException, InterruptedException, TimeoutException {
         //class FutureTask<V> implements RunnableFuture<V>
         //public FutureTask(Callable<V> callable)
-        FutureTask<Integer> integerFutureTask = new FutureTask<>( new MyCallable());
-        new Thread(integerFutureTask,"AAA").start();
+        FutureTask<Integer> integerFutureTask = new FutureTask<>(new MyCallable());
+        new Thread(integerFutureTask, "AAA").start();
         //用同一个FutureTask构造出来的thread只会执行一次,可以理解为，这是一个任务，第一个抢占到可以执行它的线程完成后，
         // 后面的线程就不需要再次进行运算
-        new Thread(integerFutureTask,"BBB").start();
+        new Thread(integerFutureTask, "BBB").start();
         //integerFutureTask.get(1,TimeUnit.SECONDS);//如果超时未完成就i会抛异常
         //获取执行结果（尽量放在程序末尾，给这个线程充足的时间让其执行）
         Integer integer = integerFutureTask.get();
         System.out.println("integer = " + integer);
-
-
-        ExecutorService fixedThreadPool = Executors.newFixedThreadPool(3);
-        Future<?> integerFuture = fixedThreadPool.submit(integerFutureTask);
-
-       String ss="ssasdas";
-   //    ss="ddd";
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-
-                String s = ss.toString();
-
-            }
-        });
-  /*      Object ss;
-        Object s2;
-        TreeSet<Object> objects = new TreeSet<>(new Comparator<Object>(ss,s2) {
-            @Override
-            public int compare(Object o1, Object o2) {
-                return 0;
-            }
-        });*/
-    }
-
-    /**
-     *
-      */
-    @Test
-        public void test(){
-        long l = System.currentTimeMillis();
-        System.out.println("l = " + l);
 
     }
 }

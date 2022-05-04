@@ -1,7 +1,10 @@
 package com.lhp.DateDemo;
 
+import org.junit.Test;
+
 import java.time.*;
 import java.time.temporal.ChronoField;
+import java.util.Date;
 
 /**
  * @author Amumu
@@ -74,4 +77,14 @@ public class DemoLocalDate {
 
 
     }
+
+    @Test
+    public void test() {
+        LocalDateTime localDateTime = LocalDateTime.ofEpochSecond(1648015317741L, 0, ZoneOffset.ofHours(8));
+        LocalDateTime localDateTiaame = new Date(1648015317741L).toInstant().atOffset(ZoneOffset.of("+8")).toLocalDateTime();
+
+        System.out.println("localDateTime = " + localDateTime);
+        System.out.println("localDateTiaame = " + localDateTiaame);
+    }
+
 }

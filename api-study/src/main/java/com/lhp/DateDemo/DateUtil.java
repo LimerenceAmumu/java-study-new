@@ -15,6 +15,24 @@ import java.util.Date;
  * @create 2020/7/6 15:08
  */
 public class DateUtil {
+
+    public static final String YYYYMMDD_HHMMSS = "yyyy-MM-dd HH:mm:ss";
+    public static final String HHMMSS = "HH:mm:ss";
+    public static final String YYYYMMDD_HHMMSS2 = "yyyy/MM/dd HH:mm:ss";
+    public static final String YYYYMMDD_HHMM = "yyyy-MM-dd HH:mm";
+    public static final String YYYYMMDD = "yyyy-MM-dd";
+    public static final String YYYYMMDD2 = "yyyy/MM/dd";
+    public static final String YYYYMM = "yyyy-MM";
+    public static final String MMDD = "MM/dd";
+    public static final String YYYY = "yyyy";
+    public static final String GMT8 = "GMT+8";
+    public static final String MM = "MM";
+
+    public static final DateTimeFormatter HHMMSS_dateTimeFormatter = DateTimeFormatter.ofPattern(HHMMSS);
+    public static final DateTimeFormatter YYYYMMDD_dateTimeFormatter = DateTimeFormatter.ofPattern(YYYYMMDD);
+    public static final DateTimeFormatter YYYYMMDD_HHMMSS_dateTimeFormatter = DateTimeFormatter.ofPattern(YYYYMMDD_HHMMSS);
+
+
     @Test
     public void testDate() throws ParseException {
         String dateStr = "20201201";

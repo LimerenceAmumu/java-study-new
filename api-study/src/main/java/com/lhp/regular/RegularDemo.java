@@ -2,7 +2,6 @@ package com.lhp.regular;
 
 import org.junit.Test;
 
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,12 +14,76 @@ import static java.util.regex.Pattern.compile;
  */
 public class RegularDemo {
     private static final Pattern GET_PATTERN = compile("get(\\p{javaUpperCase}\\w*)");
+    public static final String REGEX_NUM = "^[0-9]*$";//校验数字
+    public static final String REGEX_DECIMAL = "^(()|[-,+])(([1-9]{1}\\d*))(\\.(\\d){1,2})?$";//校验小数  带1-2 位的小数或者负数
+    public static final String REGEX_CHINESE = "^[\\u4e00-\\u9fa5]*$";//校验中文
+    public static final String REGEX_EN_AND_NUM = "^[A-Za-z0-9]+$";//校验英文和数字
+    public static final String REGEX_EN = "^[A-Za-z]+$";//校验英文
+    public static final String REGEX_EN_LOWER = "^[a-z]+$";//校验小写英文
+    public static final String REGEX_26EN_NUM = "^[A-Za-z0-9]+$";//数字和26个英文
+    public static final String REGEX_EN_NUM_UNDERLINE = "^\\w+$";//数字英文下划线
+
+    public static final String REGEX_EMAIL = "^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";//email
+    public static final String REGEX_DOMAIN = "[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+\\.?";//域名
+    public static final String REGEX_INTERNETURL = "[a-zA-z]+://[^\\s]* 或 ^http://([\\w-]+\\.)+[\\w-]+(/[\\w-./?%&=]*)?$";//url
+    public static final String REGEX_PHONE = "^(13[0-9]|14[5|7]|15[0|1|2|3|4|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\\d{8}$";//手机号码
+    public static final String REGEX_TEL_PHONE = "^(\\(\\d{3,4}-)|\\d{3.4}-)?\\d{7,8}$";//电话号码
+    public static final String REGEX_TEL_PHONE_NATIONAL = "\\d{3}-\\d{8}|\\d{4}-\\d{7}";//国内电话号码
+
+    public static final String REGEX_ID_CARD = "(^\\d{15}$)|(^\\d{18}$)|(^\\d{17}(\\d|X|x)$)";//身份证号
+
+
+    public static final String REGEX_DATE = "^\\d{4}-\\d{1,2}-\\d{1,2}";//日期格式
+    public static final String REGEX_MONEY = "^([0-9]+|[0-9]{1,3}(,[0-9]{3})*)(.[0-9]{1,2})?$";//货币
+    public static final String REGEX_CHINESE_CHAR = "[\\u4e00-\\u9fa5]";//中文字符
+    public static final String REGEX_BLANK = "\\n\\s*\\r";//空白行的正则表达式
+    public static final String REGEX_QQ = "[1-9][0-9]{4,}";//腾讯QQ
+
+    public static final String REGEX_POST_CODE = "[1-9]\\d{5}(?!\\d)";//邮政编码
+    public static final String REGEX_IP = "[1-9][0-9]{4,}";//IP
+    public static final String REGEX_IPV4 = "((2(5[0-5]|[0-4]\\d))|[0-1]?\\d{1,2})(\\.((2(5[0-5]|[0-4]\\d))|[0-1]?\\d{1,2})){3}";//IPV4
+
+
+    public static boolean test(Pattern pattern, String arg) {
+        Matcher m = pattern.matcher(arg);
+        return m.matches();
+    }
+
+    public static void checkRegex(RuleInnerTypeEnum regex, String val) {
+        Pattern compile = compile(regex.getRegex());
+        Matcher matcher = compile.matcher(val);
+        System.out.println(regex.getName() + "校验" + matcher.matches());
+    }
+
+    @Test
+    public void testUtil() {
+//        Pattern compile = compile(REGEX_CHINESE);
+//        Matcher asdas = compile.matcher("asdas");
+//        System.out.println(asdas.matches());
+//
+//        Matcher sss = compile.matcher("你");
+//        System.out.println(sss.matches());
+
+
+        System.out.println(REGEX_BLANK);
+    }
+
+    @Test
+    public void testEmail() {
+        System.out.println(testutil(REGEX_CHINESE, "你好"));
+
+    }
+
+    private boolean testutil(String reg, String arg) {
+        Matcher m = Pattern.compile(reg).matcher(arg);
+        return m.matches();
+    }
 
     /**
      * 校验数字
      */
     @Test
-    public void test1() {
+    public void testNum() {
         Pattern compile = compile("^[0-9]*$");
         Matcher matcher = compile.matcher("12");
         boolean matches = matcher.matches();
@@ -31,16 +94,6 @@ public class RegularDemo {
 
     }
 
-    // 匹配中文
-    @Test
-    public void a1() {
-        //String input ="nihc你你憨憨";//false
-        String input = "你你憨憨";//false
-        String regex = "^[\\u4e00-\\u9fa5]*$";
-        Matcher m = Pattern.compile(regex).matcher(input);
-        System.out.println(m.find());
-    }
-
     /**
      * 数字字母下划线
      */
@@ -48,6 +101,16 @@ public class RegularDemo {
     public void test6() {
         String input = "545Aasd_";
         String regex = "^\\w+$";
+        Matcher m = Pattern.compile(regex).matcher(input);
+        System.out.println(m.find());
+    }
+
+    // 匹配中文
+    @Test
+    public void a1() {
+        //String input ="nihc你你憨憨";//false
+        String input = "你你憨繁体字冫奤奤憨";//false
+        String regex = "^[\\u4e00-\\u9fa5]*$";
         Matcher m = Pattern.compile(regex).matcher(input);
         System.out.println(m.find());
     }
@@ -102,14 +165,22 @@ public class RegularDemo {
     }
 
     /**
-     *正则判断输入字符是否是以逗号间隔
+     * 数字字母
      */
     @Test
-    public void testList() {
-        String regex = "^\\w+(,\\w+)*$";
-        Pattern pattern = compile(regex);
+    public void testNumAndEn() {
+        String input = "545Aasd";
+        String regex = "^[A-Za-z0-9]+$";
+        Matcher m = Pattern.compile(regex).matcher(input);
+        System.out.println(m.find());
+    }
 
-        Matcher matcher = pattern.matcher("asd,ddd,52,&&");
+    @Test
+    public void testDecimal() {
+        String regex = "^(()|[-,+])(([1-9]{1}\\d*))(\\.(\\d){1,2})?$";
+        Pattern pattern = compile(regex); // 判断小数点后2位的数字的正则表达式
+
+        Matcher matcher = pattern.matcher("-9595665656.00");
         boolean matches = matcher.matches();
         System.out.println("matches = " + matches);
     }
@@ -202,6 +273,65 @@ public class RegularDemo {
 
         }
         return matches;
+    }
+
+    /**
+     * 正则判断输入字符是否是以逗号间隔
+     */
+    @Test
+    public void testList() {
+        String regex = "^\\w+(,\\w+)*$";
+        Pattern pattern = compile(regex);
+
+        Matcher matcher = pattern.matcher("asd,ddd,52,&&");
+        boolean matches = matcher.matches();
+        System.out.println("matches = " + matches);
+    }
+
+    @Test
+    public void testEnum() {
+
+        checkRegex(RuleInnerTypeEnum.REGEX_TEL_PHONE, "320-12569857");
+        checkRegex(RuleInnerTypeEnum.REGEX_TEL_PHONE, "aaa ");
+
+
+        //IP v4
+        checkRegex(RuleInnerTypeEnum.REGEX_IPV4, "192.36.3sss6.33");
+        checkRegex(RuleInnerTypeEnum.REGEX_IPV4, "192.36.63.33");
+
+        //
+        checkRegex(RuleInnerTypeEnum.REGEX_IPV6, "fe80:0000:0000:0000:0204:61ff:fe9d:f156");
+        checkRegex(RuleInnerTypeEnum.REGEX_IPV6, "fe80:0000:0000:0000:0204:61ff:fe9d:f156AAAA");
+
+        // TODO 需要重新找
+        checkRegex(RuleInnerTypeEnum.REGEX_BLANK, "fe80:0000:0000:0000:0204:61ff:fe9d:f156");
+        checkRegex(RuleInnerTypeEnum.REGEX_BLANK, " ");
+
+        //
+        checkRegex(RuleInnerTypeEnum.REGEX_DATE, "2012-12-20");
+        checkRegex(RuleInnerTypeEnum.REGEX_DATE, " ");
+
+
+        //
+        checkRegex(RuleInnerTypeEnum.REGEX_TEL_PHONE_NATIONAL, "0511-4405222");
+        checkRegex(RuleInnerTypeEnum.REGEX_TEL_PHONE_NATIONAL, "aaa ");
+
+        checkRegex(RuleInnerTypeEnum.REGEX_PHONE, "13566663320");
+        checkRegex(RuleInnerTypeEnum.REGEX_PHONE, "aaa ");
+
+        checkRegex(RuleInnerTypeEnum.REGEX_TEL_PHONE, "320-12569857");
+        checkRegex(RuleInnerTypeEnum.REGEX_TEL_PHONE, "aaa ");
+
+        checkRegex(RuleInnerTypeEnum.REGEX_INTERNETURL, "https://www.bing.com/");
+        checkRegex(RuleInnerTypeEnum.REGEX_INTERNETURL, "https://www.bing.com/asdaqwe*/*&&^ ");
+
+        checkRegex(RuleInnerTypeEnum.REGEX_EN_NUM_UNDERLINE, "asd656_");
+        checkRegex(RuleInnerTypeEnum.REGEX_EN_NUM_UNDERLINE, "https://www.bing.com/asdaqwe*/*&&^ ");
+
+        checkRegex(RuleInnerTypeEnum.REGEX_ID_CARD, "41112319970522605X");
+        checkRegex(RuleInnerTypeEnum.REGEX_ID_CARD, "https://www.bing.com/asdaqwe*/*&&^ ");
+
+
     }
 
 

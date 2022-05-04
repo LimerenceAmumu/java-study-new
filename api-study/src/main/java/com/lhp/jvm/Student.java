@@ -7,4 +7,5 @@ package com.lhp.jvm;
  */
 public class Student extends Person {
     int studentNum;
+    int aa;
 }

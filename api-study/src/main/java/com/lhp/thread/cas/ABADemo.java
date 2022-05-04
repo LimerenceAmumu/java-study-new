@@ -11,6 +11,7 @@ import java.util.concurrent.atomic.AtomicStampedReference;
 public class ABADemo {
     //普通的原子类
     static AtomicInteger atomicInteger=new AtomicInteger(10);
+
     //带版本号的原子类引用
     static AtomicStampedReference<Integer> stampedReference=new AtomicStampedReference<Integer>(10,1);
     public static void main(String[] args) {
@@ -30,13 +31,9 @@ public class ABADemo {
             try {
                 TimeUnit.SECONDS.sleep(2);//sleep2秒等待T1 执行完毕
                 System.out.println("T2是否执行成功"+atomicInteger.compareAndSet(10,12)+"当前值=="+atomicInteger.get());
-
-
-
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
         },"T2").start();
 
     }

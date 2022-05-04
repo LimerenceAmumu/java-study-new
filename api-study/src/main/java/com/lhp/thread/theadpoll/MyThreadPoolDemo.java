@@ -1,6 +1,7 @@
 package com.lhp.thread.theadpoll;
 
-import java.util.concurrent.Executors;
+import com.lhp.collections.juc.MyThreadFactory;
+
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -13,13 +14,14 @@ import java.util.concurrent.TimeUnit;
  */
 public class MyThreadPoolDemo {
     public static void main(String[] args) {
+
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
                 2,
                 3,
                 30L,
                 TimeUnit.SECONDS,
-                new LinkedBlockingQueue<>(3),
-                Executors.defaultThreadFactory(),
+                new LinkedBlockingQueue<>(500),
+                new MyThreadFactory(),
                 //抛异常的拒绝策略RejectedExecutionException
                 //new ThreadPoolExecutor.AbortPolicy()
                 //把任务交还给调用此线程的线程去执行
@@ -30,11 +32,18 @@ public class MyThreadPoolDemo {
                 //new ThreadPoolExecutor.DiscardPolicy()
                 new ThreadPoolExecutor.AbortPolicy()
         );
+        // 设置为true的话  即便是coreThread 空闲时间超过存活时间也会回收
+        //boolean b = threadPoolExecutor.allowsCoreThreadTimeOut();
         try {
             //模拟十个任务 需要开启10个线程
             for (int i = 0; i < 10; i++) {
                 threadPoolExecutor.execute(() -> {
                     System.out.println(Thread.currentThread().getName() + "处理中---");
+                    try {
+                        TimeUnit.SECONDS.sleep(20);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 });
             }
         } catch (Exception e) {
@@ -43,8 +52,16 @@ public class MyThreadPoolDemo {
             threadPoolExecutor.shutdown();
         }
 
-        //cpu核心数  正则
+        //cpu核心数
         System.out.println(Runtime.getRuntime().availableProcessors());
 
     }
+
+    /**
+     * 理想的线程数，使用 2倍cpu核心数
+     */
+    public static int desiredThreadNum() {
+        return Runtime.getRuntime().availableProcessors() * 2;
+    }
+
 }

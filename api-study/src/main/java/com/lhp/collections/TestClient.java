@@ -3,7 +3,9 @@ package com.lhp.collections;
 import org.junit.Test;
 
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * @author lihp
@@ -15,10 +17,11 @@ public class TestClient {
      */
     @Test
     public void testEmptyList() {
-        List<String> allData = Collections.emptyList();
-        List<String> dbData = Collections.emptyList();
-        System.out.println(allData==dbData);
-        boolean asdas = dbData.add("asdas");
-        System.out.println("asdas = " + asdas);
+        ArrayList<String> strings = new ArrayList<>();
+        strings.add("ddd");
+        CopyOnWriteArrayList<String> strings1 = new CopyOnWriteArrayList<>();
+
+        List<Integer> integers = Collections.synchronizedList(new ArrayList<Integer>());
+        LinkedList<String> strings2 = new LinkedList<>();
     }
 }
