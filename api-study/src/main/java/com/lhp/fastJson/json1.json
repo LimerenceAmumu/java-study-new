@@ -1,0 +1,1443 @@
+{
+  "address": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "address_area": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "address_area_english": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "address_city": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "address_city_english": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "address_province": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "address_province_english": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "address_town_streets": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "administrate": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "afforest_coverage": {
+    "type": "long"
+  },
+  "all_co_num": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "area": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "attestation_time": {
+    "type": "date",
+    "format": "yyyy-MM-dd HH:mm:ss"
+  },
+  "building_infos": {
+    "type": "nested"
+  },
+  "bus_station": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "bus_station_english": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "cb_administrate": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "cb_financial_res": {
+    "type": "nested"
+  },
+  "cb_research_res": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "cb_tech_platform": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "cert_date": {
+    "type": "date",
+    "format": "yyyy-MM-dd HH:mm:ss"
+  },
+  "cinema": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "cinema_english": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "commercial_complex": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "commercial_complex_english": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "community": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "community_english": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "core_list1": {
+    "type": "nested",
+    "properties": {
+      "id": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "name": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "rank": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "rank_num": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "zhuceziben_cal": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      }
+    }
+  },
+  "cost_steam": {
+    "type": "double"
+  },
+  "covers_area": {
+    "type": "double"
+  },
+  "custom_type": {
+    "type": "nested"
+  },
+  "describer": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "deve_area": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "doc_id": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "ds_id": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "electricity": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "energy_consumption": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "energy_consumption_can_up": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "enterp_business": {
+    "type": "nested",
+    "properties": {
+      "num": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "title": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "title_english": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      }
+    }
+  },
+  "enterp_capital": {
+    "type": "nested",
+    "properties": {
+      "label": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "num": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      }
+    }
+  },
+  "fast_food": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "fast_food_english": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "feidi_area": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "feidi_city": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "feidi_province": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "financial_res": {
+    "type": "nested"
+  },
+  "five_hotel": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "five_hotel_english": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "flat": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "flat_english": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "focus_area": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "gaoxinqu": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "gas": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "gcp": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "green_coverage": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "gs_num": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "have_cost_steam": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "have_electricity": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "have_gas": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "have_industrial_area": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "have_industrial_rent": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "have_office_rent": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "have_rent": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "have_water": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "have_workshop_rent": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "have_wy_cost": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "hospital": {
+    "type": "nested",
+    "properties": {
+      "isgcp": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "name": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      }
+    }
+  },
+  "human_resources": {
+    "type": "nested"
+  },
+  "idle_area": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "industrial_area": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "industrial_area_filter": {
+    "type": "double"
+  },
+  "industrial_area_price": {
+    "type": "double"
+  },
+  "industrial_rent": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "industrial_rent_filter": {
+    "type": "double"
+  },
+  "industry_category": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "introduce_desc": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "introduction": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "is_cert": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "is_cert_v2": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "is_cert_xwy": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "is_edit": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "is_effective": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "is_enclave": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "is_fee": {
+    "type": "long"
+  },
+  "is_feidi": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "is_revised": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "last_update_time": {
+    "type": "date",
+    "format": "yyyy-MM-dd HH:mm:ss"
+  },
+  "level": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "lon_lat": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "market_num": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "mobile": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "my_park_policy": {
+    "type": "nested"
+  },
+  "my_vr_link": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "name": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "name_english": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "name_english_text": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "name_text": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "news": {
+    "type": "nested",
+    "properties": {
+      "id": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "title": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      }
+    }
+  },
+  "number": {
+    "type": "nested",
+    "properties": {
+      "medical": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      }
+    }
+  },
+  "office_rent_filter": {
+    "type": "double"
+  },
+  "official_accounts": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "one_hotel": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "one_hotel_english": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "other_name": {
+    "type": "nested",
+    "properties": {
+      "name": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      }
+    }
+  },
+  "other_name_text": {
+    "type": "nested",
+    "properties": {
+      "name": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      }
+    }
+  },
+  "park_data": {
+    "type": "nested"
+  },
+  "park_dynamic": {
+    "type": "nested"
+  },
+  "park_gdp": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "park_id": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "park_ins_gdp": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "park_order": {
+    "type": "double"
+  },
+  "park_order_four": {
+    "type": "double"
+  },
+  "park_order_three": {
+    "type": "double"
+  },
+  "park_order_two": {
+    "type": "double"
+  },
+  "park_order_two_check": {
+    "type": "double"
+  },
+  "park_people": {
+    "type": "nested"
+  },
+  "park_people_english": {
+    "type": "nested"
+  },
+  "park_type": {
+    "type": "nested",
+    "properties": {
+      "label": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      }
+    }
+  },
+  "per_mu_tax": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "photo": {
+    "type": "nested",
+    "properties": {
+      "order": {
+        "type": "text"
+      },
+      "url": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      }
+    }
+  },
+  "policy": {
+    "type": "nested"
+  },
+  "policy_label1": {
+    "type": "nested",
+    "properties": {
+      "label1": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "label2": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      }
+    }
+  },
+  "policy_label_new": {
+    "type": "nested",
+    "properties": {
+      "label_leve1": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "label_leve2": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "label_leve3": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      }
+    }
+  },
+  "project_id": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "property_costs": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "public_dining": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "public_dining_english": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "public_facilities": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "pv_count": {
+    "type": "long"
+  },
+  "qr_code": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "record_id": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "registration_dec": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "rent": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "rent_filter": {
+    "type": "double"
+  },
+  "rent_space": {
+    "type": "nested"
+  },
+  "research_res": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "steam_costs": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "subway_station": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "subway_station_english": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "sys_add_time": {
+    "type": "date",
+    "format": "yyyy-MM-dd HH:mm:ss"
+  },
+  "sys_check_time": {
+    "type": "date",
+    "format": "yyyy-MM-dd HH:mm:ss"
+  },
+  "sys_update_date": {
+    "type": "date",
+    "format": "yyyy-MM-dd HH:mm:ss"
+  },
+  "tech_num": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "tech_platform": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "telphone": {
+    "type": "nested",
+    "properties": {
+      "phone": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "type": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      }
+    }
+  },
+  "third_services": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "title": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "traffic_map": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "transportation": {
+    "type": "nested",
+    "properties": {
+      "name": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "station_km": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "station_min": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "type": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      }
+    }
+  },
+  "type": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "university": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "university_num1": {
+    "type": "double"
+  },
+  "video": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "water": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "weight_json": {
+    "type": "nested"
+  },
+  "workshop_rent": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "workshop_rent_filter": {
+    "type": "double"
+  },
+  "wy_cost": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "zaiti_content": {
+    "type": "text",
+    "fields": {
+      "keyword": {
+        "type": "keyword",
+        "ignore_above": 256
+      }
+    }
+  },
+  "zaiti_infos": {
+    "type": "nested"
+  }
+}
