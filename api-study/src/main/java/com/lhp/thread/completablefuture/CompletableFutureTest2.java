@@ -31,6 +31,7 @@ public class CompletableFutureTest2 {
             return "--------";
         }, executor);
         //runAsync的future没有返回值，输出null
+
         System.out.println(runFuture.join());
         //supplyAsync的future，有返回值
         System.out.println(supplyFuture.join());
