@@ -1,8 +1,10 @@
 package com.lhp.test;
 
 import com.lhp.bean.Apple;
+import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -76,4 +78,25 @@ public class FunctionInterfaceTest {
         apples.add(new Apple("red", 60, "hn"));
 
     }
+
+    /**
+     * flatMap
+     */
+    @Test
+    public void test22() {
+        List<String> fun1 = Arrays.asList("one", "two", "three");
+        List<String> fun2 = Arrays.asList("four", "five", "six");
+        //Stream.of(fun1,fun2).flatMap(List::stream).forEach(System.out::print);
+
+        //
+        List<List<String>> lists = Arrays.asList(fun1, fun2);
+        lists.stream()
+                .flatMap(strings -> strings.stream())
+                .forEach(System.out::print);
+        System.out.println("lists = ");
+        lists.stream()
+                .map(strings -> strings.stream())
+                .forEach(System.out::print);
+    }
+
 }
