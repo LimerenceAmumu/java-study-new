@@ -23,12 +23,10 @@ public class EchoServer {
     public EchoServer(int port) {
         this.port = port;
     }
-
     public static void main(String[] args) throws Exception {
         new EchoServer(18888).start();
 
     }
-
     public void start() throws Exception {
         //消息处理逻辑
         final EchoServerHandler serverHandler = new EchoServerHandler();
