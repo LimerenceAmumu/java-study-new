@@ -17,13 +17,15 @@ public class ABADemo {
     public static void main(String[] args) {
         //testNormal();
         testABA();
+
     }
     /**
      * ABA问题的演示
      *  两个线程
      */
     static public void testNormal(){
-         new Thread(()->{
+
+        new Thread(()->{
              atomicInteger.compareAndSet(10,11);
              atomicInteger.compareAndSet(11,10);
                  },"T1").start();
