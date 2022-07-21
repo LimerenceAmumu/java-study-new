@@ -26,6 +26,7 @@ public class FutureWhenTest {
                 }
         );
 
+
         CompletableFuture<String> rstFuture = orgFuture.whenComplete((a, throwable) -> {
             System.out.println("当前线程名称：" + Thread.currentThread().getName());
             System.out.println("上个任务执行完啦，还把" + a + "传过来");

@@ -25,8 +25,8 @@ public class ThenCombineTest {
 
         CompletableFuture<String> stringCompletableFuture = CompletableFuture.supplyAsync(ThenCombineTest::get2)
                 .thenCombineAsync(first, (o, t) -> {
-                    System.out.println(o);
-                    System.out.println(t);
+                    System.out.println("o:" + o);
+                    System.out.println("t:" + t);
                     return "两个异步任务的组合";
                 });
         System.out.println(stringCompletableFuture.get());
