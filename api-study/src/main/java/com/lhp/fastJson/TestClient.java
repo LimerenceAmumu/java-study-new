@@ -4,13 +4,14 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONPath;
 import com.xiaoleilu.hutool.io.FileUtil;
+import com.xiaoleilu.hutool.util.StrUtil;
 import org.junit.Test;
 
 import java.io.File;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * @Description: fastJson
@@ -44,9 +45,27 @@ public class TestClient {
     @Test
     public void testAA() {
 
-        List<JSONObject> errors = JSONObject.parseArray("[]", JSONObject.class);//把字符串转换成集合
+        List<String> errors = JSONObject.parseArray("[\"专题\", \"药选址\", \"审批阶段\", \"产品动态\"]", String.class);//把字符串转换成集合
 
         System.out.println("jsonObject = " + errors);
+
+
+    }
+
+
+    @Test
+    public void test22() {
+
+        ArrayList<String> titleEvent = new ArrayList<>();
+        titleEvent.add("[\"专题\", \"药选址\", \"审批阶段\", \"产品动态\"]");
+        titleEvent.add("[\"企业动态\", \"媒体评议\", \"专题\", \"药选址\", \"审批阶段\", \"产品动态\"]");
+
+        Map<String, Long> map = titleEvent.stream()
+                .filter(StrUtil::isNotBlank)
+                .map(s -> JSONObject.parseArray(s, String.class))
+                .flatMap(List::stream)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        System.out.println("map = " + map);
     }
 
     @Test
