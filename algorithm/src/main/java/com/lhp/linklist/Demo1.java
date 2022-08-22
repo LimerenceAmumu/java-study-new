@@ -42,4 +42,13 @@ public class Demo1 {
         }
         return dummy.next;
     }
+
+
+    @Test
+    public void test() {
+        System.out.println(
+                "sdads" + null
+        );
+    }
+
 }

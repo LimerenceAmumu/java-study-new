@@ -45,6 +45,8 @@ public class partitionList {
         return dummy1.next;
     }
 
+    //对于递归算法，最重要的就是明确递归函数的定义。具体来说，我们的 reverse 函数定义是这样的：
+    //输入一个节点 head，将「以 head 为起点」的链表反转，并返回反转之后的头结点。
     //递归反转链表
     ListNode reverse(ListNode head) {
         System.out.println(head.val);
@@ -121,6 +123,7 @@ public class partitionList {
         reverseN(listNode, 2);
     }
 
+    // 需要一个节点记录后驱节点
     // 反转以 head 为起点的 n 个节点，返回新的头结点
     ListNode reverseN(ListNode head, int n) {
         if (n == 1) {

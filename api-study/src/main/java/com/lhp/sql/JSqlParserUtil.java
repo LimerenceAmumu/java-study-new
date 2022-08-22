@@ -5,6 +5,7 @@ import com.github.pagehelper.parser.CountSqlParser;
 import lombok.Data;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import net.sf.jsqlparser.JSQLParserException;
 import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.expression.LongValue;
 import net.sf.jsqlparser.expression.NullValue;
@@ -20,16 +21,25 @@ import net.sf.jsqlparser.statement.delete.Delete;
 import net.sf.jsqlparser.statement.insert.Insert;
 import net.sf.jsqlparser.statement.select.*;
 import net.sf.jsqlparser.statement.update.Update;
+import net.sf.jsqlparser.util.TablesNamesFinder;
+import org.junit.Test;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Slf4j
 public class JSqlParserUtil {
 
+
+    String sql = "select a.approve_date as event_date, \n" +
+            "       a.device_name,                \n" +
+            "       a.application_scope           \n" +
+            "from hs_ads.ads_deda_lget_list_device a\n" +
+            "         ,\n" +
+            "     hs_ads.ads_deda_lget_list_device_rel b\n" +
+            "     \n" +
+            "where a.is_delete = 0\n" +
+            "  and b.is_delete = 0";
 
     /**
      * 构建查询sql对应的countSql
@@ -72,22 +82,110 @@ public class JSqlParserUtil {
         }
     }
 
+    String sql2 = "select * from (select cat_id,good_id,good_name from goods order by cat_id asc, good_id desc) as tep group by cat_id";
+
     @SneakyThrows
     public static void main(String[] args) {
         Select stmt = (Select) CCJSqlParserUtil
-                .parse("SELECT col1 AS a, col2 AS b, col3 AS c FROM table WHERE col1 = 10 AND col2 = 20 AND col3 = 30");
-
+                .parse("select reg_code 注册号,classify_code 分类号, photourl 商标图形,photourl_local 商标图形本地,demo\n" +
+                        "from dw_lget_brand_info\n" +
+                        "where is_delete=0\n" +
+                        "and photourl=photourl_local");
+        SelectBody selectBody = stmt.getSelectBody();
         Map<String, Expression> map = new HashMap<>();
         for (SelectItem selectItem : ((PlainSelect) stmt.getSelectBody()).getSelectItems()) {
             selectItem.accept(new SelectItemVisitorAdapter() {
                 @Override
                 public void visit(SelectExpressionItem item) {
-                    map.put(item.getAlias().getName(), item.getExpression());
+                    if (Objects.isNull(item.getAlias())) {
+                        map.put(item.getExpression().toString(), item.getExpression());
+
+                    } else {
+                        map.put(item.getAlias().getName(), item.getExpression());
+
+                    }
                 }
             });
         }
 
         System.out.println("map " + map);
+    }
+
+    // 获取SQL 表名
+    private static List<String> test_select_table(String sql) throws JSQLParserException {
+        Statement statement = CCJSqlParserUtil.parse(sql);
+        Select selectStatement = (Select) statement;
+        TablesNamesFinder tablesNamesFinder = new TablesNamesFinder();
+
+        return tablesNamesFinder.getTableList(selectStatement);
+    }
+
+    @Test
+    public void test226() throws JSQLParserException {
+        String sql = "select aaadswqe, a.detail_url ,a.dasdas,  b.asdaaasd ,hello " +
+                " from  dw_poif_news a left  join  dw_poif_news b  on a.id =b.id\n" +
+                "where  length(a.detail_url) < 50 ";
+        Statement statement = CCJSqlParserUtil.parse(sql);
+        Select selectStatement = (Select) statement;
+        TablesNamesFinder tablesNamesFinder = new TablesNamesFinder();
+        List<String> tableList = tablesNamesFinder.getTableList(selectStatement);
+
+        SelectBody selectBody = selectStatement.getSelectBody();
+        Map<String, Expression> map = new HashMap<>();
+        for (SelectItem selectItem : ((PlainSelect) selectStatement.getSelectBody()).getSelectItems()) {
+            selectItem.accept(new SelectItemVisitorAdapter() {
+                @Override
+                public void visit(SelectExpressionItem item) {
+                    if (Objects.isNull(item.getAlias())) {
+                        System.out.println("item.getASTNode().jjtGetLastToken() = " + item.getASTNode().jjtGetLastToken());
+
+                        map.put(item.getExpression().toString(), item.getExpression());
+
+                    } else {
+                        map.put(item.getAlias().getName(), item.getExpression());
+
+                    }
+                }
+            });
+        }
+        System.out.println("map = " + map);
+    }
+
+    @Test
+    public void testddd() {
+
+        try {
+            Select parse = (Select) CCJSqlParserUtil.parse(sql);
+
+            PlainSelect selectBody = (PlainSelect) parse.getSelectBody();
+            List<SelectItem> selectItems = selectBody.getSelectItems();
+            for (SelectItem selectItem : selectItems) {
+                System.out.println("selectItem.toString() = " + selectItem.toString());
+            }
+            List<Join> joins = selectBody.getJoins();
+            for (Join join : joins) {
+                System.out.println(join.toString());
+            }
+            Expression expression = CCJSqlParserUtil.parseExpression("count(1)");
+
+            SelectExpressionItem selectExpressionItem1 = new SelectExpressionItem(expression);
+            selectItems.clear();
+            selectItems.add(selectExpressionItem1);
+
+            List<SelectItem> selectItems2 = selectBody.getSelectItems();
+            System.out.println("selectItems2 = " + selectItems2);
+
+
+        } catch (JSQLParserException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    public void testsss() throws JSQLParserException {
+        List<String> strings = test_select_table(sql2);
+        System.out.println("strings = " + strings);
     }
 
     public static String buildPageSql(String sql, Long current, Long pageSize) {

@@ -12,6 +12,110 @@ import java.util.PriorityQueue;
  */
 public class MerageKList {
 
+
+    ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        // 虚拟头结点
+        ListNode dummy = new ListNode(-1), p = dummy;
+        ListNode p1 = l1, p2 = l2;
+
+        while (p1 != null && p2 != null) {
+            // 比较 p1 和 p2 两个指针
+            // 将值较小的的节点接到 p 指针
+            if (p1.val > p2.val) {
+                p.next = p2;
+                p2 = p2.next;
+            } else {
+                p.next = p1;
+                p1 = p1.next;
+            }
+            // p 指针不断前进
+            p = p.next;
+        }
+
+        if (p1 != null) {
+            p.next = p1;
+        }
+
+        if (p2 != null) {
+            p.next = p2;
+        }
+
+        return dummy.next;
+    }
+
+
+    ListNode partition(ListNode head, int x) {
+        ListNode small = new ListNode(-1);
+        ListNode big = new ListNode(-1);
+        ListNode p = head;
+
+        while (p != null) {
+            if (p.val > x) {
+                small.next = p;
+                small = small.next;
+            } else {
+                big.next = p;
+                big = big.next;
+            }
+            p = p.next;
+        }
+        small.next = big.next;
+        return small.next;
+    }
+
+    ListNode partitioss3n(ListNode head, int x) {
+        // 存放小于 x 的链表的虚拟头结点
+        ListNode dummy1 = new ListNode(-1);
+        // 存放大于等于 x 的链表的虚拟头结点
+        ListNode dummy2 = new ListNode(-1);
+        ListNode p = head;
+        while (head != null) {
+            if (p.val >= x) {
+                dummy2.next = p;
+                dummy2 = dummy2.next;
+            } else {
+                dummy1.next = p;
+                dummy1 = dummy1.next;
+            }
+            //断开指针
+            ListNode temp = p.next;
+            p.next = null;
+            p = temp;
+        }
+        return null;
+    }
+
+    ListNode partitio3n(ListNode head, int x) {
+        // 存放小于 x 的链表的虚拟头结点
+        ListNode dummy1 = new ListNode(-1);
+        // 存放大于等于 x 的链表的虚拟头结点
+        ListNode dummy2 = new ListNode(-1);
+        // p1, p2 指针负责生成结果链表
+        ListNode p1 = dummy1, p2 = dummy2;
+        // p 负责遍历原链表，类似合并两个有序链表的逻辑
+        // 这里是将一个链表分解成两个链表
+        ListNode p = head;
+        while (p != null) {
+            if (p.val >= x) {
+                p2.next = p;
+                p2 = p2.next;
+            } else {
+                p1.next = p;
+                p1 = p1.next;
+            }
+            // 断开原链表中的每个节点的 next 指针
+            ListNode temp = p.next;
+            p.next = null;
+            p = temp;
+        }
+        // 连接两个链表
+        p1.next = dummy2.next;
+
+        return dummy1.next;
+    }
+
+
+    //正确
     ListNode mergeKLists(ListNode[] lists) {
         if (lists.length == 0) return null;
         // 虚拟头结点
@@ -39,6 +143,48 @@ public class MerageKList {
         return dummy.next;
     }
 
+
+    ListNode mergeKLists2(ListNode[] lists) {
+        if (lists.length == 0) {
+            return null;
+        }
+        ListNode dummy = new ListNode(-1);
+
+        PriorityQueue<ListNode> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a.val));
+        for (ListNode p : lists) {
+            if (p != null) {
+                pq.add(p);
+            }
+        }
+        while (!pq.isEmpty()) {
+            ListNode poll = pq.poll();
+            if (poll.next != null) {
+                pq.add(poll.next);
+            }
+            dummy.next = poll;
+
+            dummy = dummy.next;
+
+        }
+
+
+        return dummy.next;
+    }
+
+    ListNode findFromEnd2(ListNode head, int k) {
+        ListNode fast = new ListNode(-1);
+        ListNode slow = new ListNode(-1);
+        for (int i = 0; i < k; i++) {
+            fast = fast.next;
+        }
+        while (fast != null) {
+            fast = fast.next;
+            slow = slow.next;
+
+        }
+        return slow.next;
+
+    }
 
     // 返回链表的倒数第 k 个节点
     ListNode findFromEnd(ListNode head, int k) {
@@ -72,6 +218,19 @@ public class MerageKList {
         return slow;
     }
 
+    boolean hasCycle222(ListNode head) {
+        ListNode fast = head;
+        ListNode slow = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     //是否包含环
     boolean hasCycle(ListNode head) {
         // 快慢指针初始化指向 head
@@ -90,6 +249,27 @@ public class MerageKList {
         return false;
     }
 
+    ListNode detectCycle222(ListNode head) {
+        ListNode fast = head;
+        ListNode slow = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                slow = head;
+                break;
+            }
+        }
+        if (fast == null || fast.next == null) {
+            return null;
+        }
+
+        while (fast != slow) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
 
     //环的起点 如果有的话
     ListNode detectCycle(ListNode head) {
