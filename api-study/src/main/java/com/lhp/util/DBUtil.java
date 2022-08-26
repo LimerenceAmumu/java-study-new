@@ -29,7 +29,6 @@ public class DBUtil {
         }
     }
 
-    //jdbc:postgresql://192.168.201.30:5432/postgres
     //获取数据库连接
     public Connection getConnection(String url, String username, String password, String driver) {
         try {

@@ -4,6 +4,9 @@ import org.junit.Test;
 
 import java.util.BitSet;
 
+/**
+ * 手写布隆过滤器
+ */
 public class MyBloomFilter {
 
     /**

@@ -17,8 +17,10 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -97,10 +99,10 @@ public class FileDemo {
      * 读取txt内容 换行
      */
     @Test
-    public void testReadFile() {
+    public void testReadFile() throws SQLException {
         File file = new File((new File("")).getAbsolutePath() + "/error_id.txt");
         List<String> ids = FileUtil.readLines(file, "utf-8");
-        int limit = 100;
+        int limit = ids.size();
         List<List<String>> splitList = Stream.iterate(0, n -> n + 1)
 //
                 .limit(limit)
@@ -113,13 +115,15 @@ public class FileDemo {
                 .collect(Collectors.toList());
 
         DBUtil dbUtil = new DBUtil();
-        Connection connection = dbUtil.getConnection("jdbc:postgresql://192.168.201.30:5432/postgres",
-                "hsdata",
-                "HJN9FBDxs8vBkKgw",
-                "org.postgresql.Driver");
-
 
         for (List<String> idsPer : splitList) {
+            Connection connection = dbUtil.getConnection("///jdbc:postgresql://192.168.201.30:5432/hsdata",
+                    "hsdata",
+                    "HJN9FBDxs8vBkKgw",
+                    "org.postgresql.Driver");
+
+            connection.setSchema("keystone_ods");
+            connection.setAutoCommit(false);
             String join = Joiner.on(",").join(idsPer);
             String sql = baseSql + join + ")";
             dbUtil.update(connection, sql);
@@ -132,13 +136,16 @@ public class FileDemo {
     @Test
     public void testDB() {
         DBUtil dbUtil = new DBUtil();
-        Connection connection = dbUtil.getConnection("jdbc:postgresql://192.168.201.30:5432/postgres",
+        Connection connection = dbUtil.getConnection("jdbc:postgresql://192.168.201.30:5432/hsdata",
                 "hsdata",
                 "HJN9FBDxs8vBkKgw",
                 "org.postgresql.Driver");
 
         try {
             connection.setSchema("keystone_ods");
+            Map<String, Object> one = dbUtil.getOne(connection, "Select * from ds_patent_8101 limit 1");
+
+            DatabaseMetaData metaData = connection.getMetaData();
         } catch (SQLException e) {
             e.printStackTrace();
         }

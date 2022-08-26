@@ -12,10 +12,8 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 public class SpinLockDemo {
     AtomicReference<Thread> atomicReference = new AtomicReference<>();
-
     public static void main(String[] args) {
         SpinLockDemo spinLockDemo = new SpinLockDemo();
-
         new Thread(() -> {
             spinLockDemo.lock();
             //暂停几秒钟线程
@@ -26,32 +24,24 @@ public class SpinLockDemo {
             }
             spinLockDemo.unLock();
         }, "A").start();
-
         //暂停500毫秒,线程A先于B启动
         try {
             TimeUnit.MILLISECONDS.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
         new Thread(() -> {
             spinLockDemo.lock();
-
             spinLockDemo.unLock();
         }, "B").start();
-
-
     }
-
     public void lock() {
         Thread thread = Thread.currentThread();
         System.out.println(Thread.currentThread().getName() + "\t" + "----come in");
         while (!atomicReference.compareAndSet(null, thread)) {
-
             System.out.println(Thread.currentThread().getName() + "\t 尝试获取锁");
         }
     }
-
     public void unLock() {
         Thread thread = Thread.currentThread();
         atomicReference.compareAndSet(thread, null);

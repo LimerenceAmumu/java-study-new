@@ -28,7 +28,6 @@ public class DemoReflect {
         //验证是否Class只加载一次
         System.out.println(aClass == personClass);
         System.out.println(aClass == aClass1);
-
     }
 
     @Test
@@ -36,8 +35,5 @@ public class DemoReflect {
         // Class<DemoClass> demoClassClass = DemoClass.class;//不执行静态代码块
         Class<?> aClass = ClassLoader.getSystemClassLoader().loadClass("com.lhp.reflect.DemoClass");//不执行静态代码块
         //Class<?> aClass = Class.forName("com.lhp.reflect.DemoClass");//执行静态代码块
-
-
     }
-
 }

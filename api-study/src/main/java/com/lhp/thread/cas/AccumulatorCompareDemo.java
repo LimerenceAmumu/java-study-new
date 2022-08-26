@@ -6,6 +6,9 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.LongAccumulator;
 import java.util.concurrent.atomic.LongAdder;
 
+/**
+ * 几种累加器效率对比
+ */
 class ClickNumber //资源类
 {
     int number = 0;

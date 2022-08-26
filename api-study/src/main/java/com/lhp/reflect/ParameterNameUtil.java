@@ -6,7 +6,6 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 import java.util.List;
-
 public class ParameterNameUtil {
 
     public static void main(String[] args) {
@@ -16,7 +15,6 @@ public class ParameterNameUtil {
     }
 
     public void prinlv(String aa, Integer ad, Apple apple){
-
         apple=new Apple();
         System.out.println("aa = " + aa);
         System.out.println("ad = " + ad);
