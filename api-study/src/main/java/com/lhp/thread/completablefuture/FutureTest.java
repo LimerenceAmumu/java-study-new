@@ -30,7 +30,7 @@ public class FutureTest {
         // 奖牌信息  500ms
         FutureTask<MedalInfo> medalInfoFutureTask = new FutureTask<>(() -> medalService.getMedalInfo(userId));
         executorService.submit(medalInfoFutureTask);
-        UserInfo userInfo = userInfoFutureTask.get();//获取个人信息结果
+        UserInfo userInfo = userInfoFutureTask.get();//获取个人信息结果//阻塞
         MedalInfo medalInfo = medalInfoFutureTask.get();//获取勋章信息结果
         System.out.println("总共用时" + (System.currentTimeMillis() - startTime) + "ms");
         executorService.shutdown();

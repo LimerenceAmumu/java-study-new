@@ -13,11 +13,12 @@ public class CoutDownLatchDemo {
         CountDownLatch countDownLatch = new CountDownLatch(4);
         for (int i = 1; i <= 4; i++) {
             new Thread(()->{
-
                 System.out.println(Thread.currentThread().getName()+"亡国");
                 countDownLatch.countDown();
             }, CountryEnum.foreach(i).name()).start();
         }
+
+
         countDownLatch.await();
         System.out.println(Thread.currentThread().getName()+"统一");
 

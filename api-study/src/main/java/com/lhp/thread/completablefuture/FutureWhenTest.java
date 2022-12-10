@@ -22,9 +22,10 @@ public class FutureWhenTest {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    return "捡田螺的小男孩";
+                    return "第一个任务的返回值";
                 }
         );
+
 
         CompletableFuture<String> rstFuture = orgFuture.whenComplete((a, throwable) -> {
             System.out.println("当前线程名称：" + Thread.currentThread().getName());
@@ -36,6 +37,6 @@ public class FutureWhenTest {
         });
 
         //上个任务的结果
-        System.out.println(rstFuture.get());
+        System.out.println("任务2拿到了 " + rstFuture.get());
     }
 }

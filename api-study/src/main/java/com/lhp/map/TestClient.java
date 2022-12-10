@@ -10,13 +10,25 @@ import java.util.HashMap;
  */
 public class TestClient {
     /**
-     *map 的get方法是  get(Object key)
+     * map 的get方法是  get(Object key)
      */
     @Test
     public void test() {
 
         HashMap<String, String> dm = new HashMap<>();
-        dm.put("1","5");
+        dm.put("1", "5");
         String s = dm.get(1);
     }
+
+
+    @Test
+    public void test22() {
+        HashMap<String, Integer> hsTest = new HashMap<String, Integer>();
+        for (int i = 0; i < 13; i++) {
+            hsTest.put(i + "", i);
+        }
+        hsTest.get(0);
+        System.out.println("the size of hsTest is " + hsTest.size());
+    }
+
 }

@@ -258,4 +258,9 @@ public class StringTestClient {
     }
 
 
+    @Test
+    public void test02() {
+        Boolean.valueOf(true);
+    }
+
 }

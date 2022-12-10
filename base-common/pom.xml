@@ -14,6 +14,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.lhp</groupId>
             <artifactId>base-model</artifactId>
             <version>1.0-SNAPSHOT</version>

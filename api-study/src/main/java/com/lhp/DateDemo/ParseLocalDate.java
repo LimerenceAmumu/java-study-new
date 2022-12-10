@@ -1,5 +1,8 @@
 package com.lhp.DateDemo;
 
+import org.junit.Test;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -26,7 +29,18 @@ public class ParseLocalDate {
         //解析
  /*       LocalDateTime parse = LocalDateTime.parse(format,DateTimeFormatter.BASIC_ISO_DATE);
         System.out.println("parse = " + parse);*/
-        LocalDateTime parse1 = LocalDateTime.parse(format1,DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+        LocalDateTime parse1 = LocalDateTime.parse(format1, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
         System.out.println("parse1 = " + parse1);
     }
+
+
+    @Test
+    public void test() {
+
+        LocalDate date = LocalDate.parse("2022-07-26", DateUtil.YYYYMMDD_dateTimeFormatter);
+        if (!LocalDate.now().isBefore(date)) {
+            System.out.println("set cache");
+        }
+    }
+
 }

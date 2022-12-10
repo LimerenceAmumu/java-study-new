@@ -8,7 +8,9 @@
     <!--        <version>1.0-SNAPSHOT</version>-->
     <!--    </parent>-->
     <modelVersion>4.0.0</modelVersion>
+    <groupId>com.lhp</groupId>
 
+    <version>1.0</version>
     <artifactId>java-reactor</artifactId>
 
     <properties>

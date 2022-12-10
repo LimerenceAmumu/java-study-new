@@ -5,10 +5,8 @@ import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import com.lhp.bean.DemoExcelBean;
 import com.lhp.bean.OrderBusiness;
-
 import com.lhp.functionInterfaces.Converter;
 import com.lhp.functionInterfaces.TestDefaultMethod;
-import org.apache.commons.codec.EncoderException;
 import org.apache.commons.collections4.ListUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -696,22 +694,31 @@ public class TestClient {
     }
 
     @Test
-    public void testBigDemical(){
+    public void testBigDemical() {
         BigDecimal bigDecimal = new BigDecimal("550000000069");
         System.out.println("bigDecimal.toString() = " + bigDecimal.toString());
         System.out.println("bigDecimal.doubleValue() = " + bigDecimal.doubleValue());
 
 
     }
+
+
     @Test
-    public void testPowerOfTwo(){
+    public void test00() {
+        String positiveRate = new BigDecimal("4776").divide(new BigDecimal("4784"), 4, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(100)).setScale(0, BigDecimal.ROUND_HALF_UP).toString();
+        System.out.println("positiveRate = " + positiveRate);
+
+    }
+
+    @Test
+    public void testPowerOfTwo() {
         HashMap demo = new HashMap<>();
         String key = "1";
         String value = "2";
 
-        demo.put(key,value);
+        demo.put(key, value);
 
-        System.out.println(1<<30);
+        System.out.println(1 << 30);
     }
 
     /**
