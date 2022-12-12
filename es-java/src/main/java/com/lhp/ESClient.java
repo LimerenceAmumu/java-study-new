@@ -1,22 +1,21 @@
 package com.lhp;
 
+import cn.hutool.core.util.StrUtil;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.xiaoleilu.hutool.util.StrUtil;
 import io.searchbox.client.JestClient;
 import io.searchbox.client.JestClientFactory;
 import io.searchbox.client.JestResult;
 import io.searchbox.client.config.HttpClientConfig;
 import io.searchbox.indices.mapping.GetMapping;
 import lombok.SneakyThrows;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpHost;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -27,11 +26,11 @@ import java.util.stream.Collectors;
  */
 public class ESClient {
 
-    String url = "http://192.168.110.62:18054";
-    String user = "aa";
-    String passWord = "aa";
+    String url = "http://192.168.200.236:9200";
+    String user = "lake-ro";
+    String passWord = "T7kB5OpY1k+mavBH";
     String explodeFiled = "Value.data";
-    String index = "sfzchannel_mm_73667a6368616e6e656c5f6d6d";
+    String index = "product_rp_list_v001";
     JestClient jestClient = null;
 
     @SneakyThrows
@@ -123,4 +122,78 @@ public class ESClient {
         return factory.getObject();
 
     }
+
+    @Test
+    public void test03() {
+        JestClient jestClient = getJestClient(url, user, passWord);
+
+        GetMapping getMapping = new GetMapping.Builder().build();
+        JestResult jestResult = null;
+        try {
+            jestResult = jestClient.execute(getMapping);
+            //返回结果
+            JsonObject jsonObject = jestResult.getJsonObject().getAsJsonObject("yujq").getAsJsonObject("mappings").getAsJsonObject("properties");
+
+            List<String> fieldNames = new ArrayList<>(jsonObject.keySet());
+            fieldNames.remove("doc");
+            fieldNames.remove("doc_as_upsert");
+
+            for (String fieldName : fieldNames) {
+
+                String type;
+
+                JsonElement type1 = jsonObject.getAsJsonObject(fieldName).get("type");
+                if (type1 == null) {
+                    type = "NESTED";
+                } else {
+                    type = jsonObject.getAsJsonObject(fieldName).get("type").toString();
+
+                }
+
+                if (StringUtils.isNotBlank(type) && type.startsWith("\"")) {
+                    type = type.replaceAll("\"", "");
+                    //  System.out.println("type = " + type);
+                }
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @Test
+    public void test22() {
+        String type = "\"12\"";
+        System.out.println("type = " + type);
+
+        if (StringUtils.isNotBlank(type) && type.startsWith("\"")) {
+            type = type.replaceAll("\"", "");
+            System.out.println("type = " + type);
+        }
+
+    }
+
+
+    @Test
+    public void test222() {
+        try (JestClient jestClient = getJestClient(url, user, passWord)
+        ) {
+            GetMapping getMapping = new GetMapping.Builder().build();
+            JestResult jestResult = jestClient.execute(getMapping);
+            JsonObject jsonObject = jestResult.getJsonObject();
+            JsonElement status = jsonObject.get("status");
+            if (status != null && Objects.equals(status.getAsString(), 403)) {
+            }
+            for (String indexName : jsonObject.keySet()) {
+                if (!indexName.startsWith(".") && !indexName.contains("apm-7")) {
+                    System.out.println(indexName);
+                }
+            }
+
+        } catch (IOException e) {
+        }
+    }
+
 }

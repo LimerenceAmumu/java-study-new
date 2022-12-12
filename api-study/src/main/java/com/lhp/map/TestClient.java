@@ -1,5 +1,7 @@
 package com.lhp.map;
 
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Table;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -30,5 +32,26 @@ public class TestClient {
         hsTest.get(0);
         System.out.println("the size of hsTest is " + hsTest.size());
     }
+
+
+    @Test
+    public void test2() {
+        // 1. 双键测试
+        Table<String, String, String> table = HashBasedTable.create();
+        table.put("1", "a", "第1组第a个数据");
+        table.put("1", "b", "第1组第b个数据");
+        table.put("2", "a", "第2组第a个数据");
+        table.put("2", "b", "第2组第b个数据");
+        System.out.println(table.get("1", "a"));
+        System.out.println(table.get("1", "b"));
+        System.out.println(table.get("2", "a"));
+        System.out.println(table.get("2", "b"));
+    }
+
+    @Test
+    public void testss() {
+
+    }
+
 
 }

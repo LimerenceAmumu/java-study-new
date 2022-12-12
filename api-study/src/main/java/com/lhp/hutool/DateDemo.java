@@ -1,6 +1,7 @@
 package com.lhp.hutool;
 
-import com.xiaoleilu.hutool.date.DateUtil;
+
+import cn.hutool.core.date.DateUtil;
 
 import java.util.Calendar;
 import java.util.Date;

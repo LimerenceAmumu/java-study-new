@@ -1,10 +1,11 @@
 package com.lhp.fastJson;
 
+import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONPath;
-import com.xiaoleilu.hutool.io.FileUtil;
-import com.xiaoleilu.hutool.util.StrUtil;
+import com.lhp.bean.Apple;
 import org.junit.Test;
 
 import java.io.File;
@@ -40,7 +41,49 @@ public class TestClient {
 
 
     /**
-     *
+     * java 集合转 json 数组
+     */
+    @Test
+    public void test01() {
+        ArrayList<Apple> apples = new ArrayList<>(10);
+
+        for (int i = 0; i < 9; i++) {
+            Apple apple = new Apple();
+            apple.setColor("sss");
+            apple.setWeight(20);
+            apples.add(apple);
+        }
+        String jsonString = JSONArray.toJSONString(apples);
+        System.out.println("jsonString = " + jsonString);
+
+        String jsonString2 = JSONArray.toJSONString(Collections.emptyList());
+        System.out.println("jsonString2 = " + jsonString2);
+
+        String jsonString3 = JSONArray.toJSONString(null);
+        System.out.println("jsonString3 = " + jsonString2);
+
+    }
+
+    /**
+     * json 转 List
+     */
+    @Test
+    public void test03() {
+        List<Apple> apples = JSONObject.parseArray("[{\"color\":\"sss\",\"weight\":20},{\"color\":\"sss\",\"weight\":20},{\"color\":\"sss\",\"weight\":20},{\"color\":\"sss\",\"weight\":20},{\"color\":\"sss\",\"weight\":20},{\"color\":\"sss\",\"weight\":20},{\"color\":\"sss\",\"weight\":20},{\"color\":\"sss\",\"weight\":20},{\"color\":\"sss\",\"weight\":20}]",
+                Apple.class);
+
+        System.out.println("apples = " + apples);
+
+        List<Apple> applessssss = JSONObject.parseArray("[]", Apple.class);
+        System.out.println("applesssss = " + applessssss);
+
+        List<Apple> applesss = JSONObject.parseArray(null, Apple.class);
+        System.out.println("applesss = " + applesss);
+    }
+
+
+    /**
+     * 数组字符串 转List
      */
     @Test
     public void testAA() {
@@ -49,6 +92,8 @@ public class TestClient {
 
         System.out.println("jsonObject = " + errors);
 
+        String s = JSONArray.toJSONString(errors);
+        System.out.println("s = " + s);
 
     }
 
@@ -68,6 +113,9 @@ public class TestClient {
         System.out.println("map = " + map);
     }
 
+    /**
+     * 从文件中读取json字符串
+     */
     @Test
     public void test00() {
         String s = FileUtil.readString(new File("/Users/lihepeng/IdeaProjects/java-study/api-study/src/main/java/com/lhp/fastJson/json1.json"), "utf-8");
@@ -77,6 +125,22 @@ public class TestClient {
         System.out.println("size = " + size);
     }
 
+
+    //读取 json   数据类型
+    @Test
+    public void test00Temp() {
+        String s = FileUtil.readString(new File("/Users/lihepeng/IdeaProjects/java-study/api-study/src/main/java/com/lhp/fastJson/json1.json"), "utf-8");
+        JSONObject jsonObject = JSONObject.parseObject(s);
+        JSONObject address = (JSONObject) JSONPath.read(s, "address");
+        Set<String> keySet = address.keySet();
+        for (String s1 : keySet) {
+            String v = address.getString(s1);
+            String simpleName = address.get(s1).getClass().getSimpleName();
+            System.out.println("simpleName = " + simpleName);
+            //if()
+            System.out.println(s1 + ":" + v);
+        }
+    }
 
     @Test
     public void test2() {

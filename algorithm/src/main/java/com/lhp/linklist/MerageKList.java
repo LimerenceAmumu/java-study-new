@@ -13,6 +13,7 @@ import java.util.PriorityQueue;
 public class MerageKList {
 
 
+    //合并
     ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         // 虚拟头结点
         ListNode dummy = new ListNode(-1), p = dummy;
@@ -43,7 +44,30 @@ public class MerageKList {
         return dummy.next;
     }
 
+    ListNode mergeTwoListsMy(ListNode l1, ListNode l2) {
+        ListNode dummy = new ListNode(-1);
+        ListNode p = dummy;
+        ListNode p1 = l1;
+        ListNode p2 = l2;
+        while (p1 != null && p2 != null) {
+            if (p1.val > p2.val) {
+                p.next = p2;
+                p2 = p2.next;
+            } else {
+                p.next = p1;
+                p1 = p1.next;
+            }
+            p = p.next;
+        }
+        if (p1 == null) {
+            p.next = p2;
+        } else {
+            p.next = p1;
+        }
+        return dummy.next;
+    }
 
+    //分隔
     ListNode partition(ListNode head, int x) {
         ListNode small = new ListNode(-1);
         ListNode big = new ListNode(-1);
@@ -138,6 +162,29 @@ public class MerageKList {
                 pq.add(node.next);
             }
             // p 指针不断前进
+            p = p.next;
+        }
+        return dummy.next;
+    }
+
+    ListNode mergeKListsMy(ListNode[] lists) {
+        if (lists.length == 0) return null;
+        // 虚拟头结点
+        ListNode dummy = new ListNode(-1);
+        ListNode p = dummy;
+        PriorityQueue<ListNode> queue = new PriorityQueue<ListNode>(Comparator.comparing(l -> l.val));
+
+        for (ListNode h : lists) {
+            if (h != null) {
+                queue.add(h);
+            }
+        }
+        while (!queue.isEmpty()) {
+            ListNode head = queue.poll();
+            p.next = head;
+            if (head.next != null) {
+                queue.add(head.next);
+            }
             p = p.next;
         }
         return dummy.next;

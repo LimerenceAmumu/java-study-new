@@ -1,6 +1,6 @@
 package com.lhp.collections.hutool;
 
-import com.xiaoleilu.hutool.util.CollectionUtil;
+import cn.hutool.core.collection.CollectionUtil;
 import org.junit.Test;
 
 import java.util.List;

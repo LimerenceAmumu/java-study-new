@@ -28,6 +28,17 @@ public class ClassLoaderTestClient {
         System.out.println("systemClassLoader = " + systemClassLoader);//sun.misc.Launcher$AppClassLoader@18b4aac2
     }
 
+    @Test
+    public void testsss() {
+        String ss = "SELECT * FROM \n (SELECT id,acce_no,drug_type,\n";
+        ss = ss.replaceAll(" ", "").replaceAll("\n", "");
+
+        String trim1 = ss.replaceAll("\n", "");
+        System.out.println("trim1 = " + trim1);
+        String trim = ss.trim();
+        System.out.println("trim = " + trim);
+    }
+
 
     /**
      * 根加载器无法通过代码直接获取

@@ -1,10 +1,10 @@
 package com.lhp.stringDemo;
 
+import cn.hutool.core.convert.Convert;
+import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.base.Joiner;
 import com.lhp.DateDemo.DateUtil;
-import com.xiaoleilu.hutool.convert.Convert;
-import com.xiaoleilu.hutool.util.StrUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
