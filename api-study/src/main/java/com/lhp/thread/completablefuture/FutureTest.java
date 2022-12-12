@@ -6,7 +6,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 
 /**
- * 如果我们不使用Future进行并行异步调用，而是在主线程串行进行的话，耗时大约为300+500+300 = 1100 ms。可以发现，future+线程池异步配合，提高了程序的执行效率。
+ * 如果我们不使用Future进行并行异步调用，而是在主线程串行进行的话，耗时大约为300+500+300 = 1100 ms。
+ * 可以发现，future+线程池异步配合，提高了程序的执行效率。
  * 但是Future对于结果的获取，不是很友好，只能通过阻塞或者轮询的方式得到任务的结果。
  * <p>
  * Future.get() 就是阻塞调用，在线程获取结果之前get方法会一直阻塞。

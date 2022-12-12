@@ -1,14 +1,20 @@
 package com.lhp.test;
 
+import cn.hutool.core.util.StrUtil;
+import cn.hutool.crypto.symmetric.SymmetricCrypto;
 import com.lhp.bean.Apple;
+import com.xiaoleilu.hutool.crypto.SecureUtil;
+import com.xiaoleilu.hutool.crypto.symmetric.SymmetricAlgorithm;
+import com.xiaoleilu.hutool.util.CharsetUtil;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.groupingBy;
 
 /**
  * @author Amumu
@@ -68,14 +74,14 @@ public class FunctionInterfaceTest {
 
     public static void init() {
 
-        apples.add(new Apple("red", 150, "hn"));
-        apples.add(new Apple("red", 150, "zz"));
-        apples.add(new Apple("yellow", 80, "sd"));
-        apples.add(new Apple("black", 150, "hh"));
-        apples.add(new Apple("green", 200, "hd"));
-        apples.add(new Apple("orign", 110, "tf"));
-        apples.add(new Apple("red", 150, "hn"));
-        apples.add(new Apple("red", 60, "hn"));
+        apples.add(new Apple("red", null, "12"));
+        apples.add(new Apple("red", null, "24"));
+        apples.add(new Apple("yellow", 80, "12"));
+        apples.add(new Apple("black", null, "12"));
+        apples.add(new Apple("green", 200, "30"));
+        apples.add(new Apple("orign", 110, "12"));
+        apples.add(new Apple("red", 150, "12"));
+        apples.add(new Apple("red", 60, "12"));
 
     }
 
@@ -99,4 +105,53 @@ public class FunctionInterfaceTest {
                 .forEach(System.out::print);
     }
 
+
+    @Test
+    public void test212(){
+        init();
+        Map<String, List<Apple>> collect = apples.stream().sorted(Comparator.comparing(Apple::getFrom)).collect(groupingBy(Apple::getColor));
+        System.out.println("collect = " + collect);
+    }
+
+
+    @Test
+    public void testdd(){
+
+        String s1 = StrUtil.unWrap(",AS,D", ",", ",");
+        String a=",ASD";
+        String substring = a.substring(a.indexOf(",")+1);
+        System.out.println("s1 = " + s1);
+
+    }
+
+    @Test
+    public void testCode(){
+
+        String nihao = DigestUtils.sha1Hex("nihao");
+        String s = SecureUtil.sha1("nihao");
+        System.out.println(nihao.equals(s));
+
+
+        //第一种：以AES算法
+        String content = "test中文";
+        //随机生成密钥
+        byte[] key = SecureUtil.generateKey(SymmetricAlgorithm.AES.getValue()).getEncoded();
+        //构建
+        SymmetricCrypto aes = new SymmetricCrypto(SymmetricAlgorithm.AES.getValue(),key);
+
+
+        //加密
+       String encrypt = aes.encryptHex(content);
+        //解密
+       String str = aes.decryptStr(encrypt);
+
+        //加密16进制表示
+        String encryptHex = aes.encryptHex(content);
+        System.out.println("AES加密16进制表示：" + encryptHex);   //46953def8ec02e21f7c9bb4405243a70
+        //解密为字符串
+        String decryptStr = aes.decryptStr(encryptHex, CharsetUtil.CHARSET_UTF_8);
+        System.out.println("AES解密为字符串：" + decryptStr);  //test中文
+
+
+    }
 }
