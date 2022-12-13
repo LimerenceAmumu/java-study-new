@@ -5,7 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /***
- * JDK  动态代理类
+ * JDK  动态代理类  基于接口
  */
 public class DebugInvocationHandler implements InvocationHandler {
     /**
