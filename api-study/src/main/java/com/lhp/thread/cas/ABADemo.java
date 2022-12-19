@@ -25,18 +25,18 @@ public class ABADemo {
      */
     static public void testNormal(){
 
-        new Thread(()->{
-             atomicInteger.compareAndSet(10,11);
-             atomicInteger.compareAndSet(11,10);
-                 },"T1").start();
-        new Thread(()->{
+        new Thread(() -> {
+            atomicInteger.compareAndSet(10, 11);
+            atomicInteger.compareAndSet(11, 10);
+        }, "LockSupportDemo4").start();
+        new Thread(() -> {
             try {
                 TimeUnit.SECONDS.sleep(2);//sleep2秒等待T1 执行完毕
-                System.out.println("T2是否执行成功"+atomicInteger.compareAndSet(10,12)+"当前值=="+atomicInteger.get());
+                System.out.println("T2是否执行成功" + atomicInteger.compareAndSet(10, 12) + "当前值==" + atomicInteger.get());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        },"T2").start();
+        }, "T2").start();
 
     }
 

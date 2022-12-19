@@ -1,5 +1,7 @@
 package com.lhp.thread.completablefuture;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -16,6 +18,7 @@ import java.util.concurrent.FutureTask;
  * 阻塞的方式和异步编程的设计理念相违背，而轮询的方式会耗费无谓的CPU资源。
  * 因此，JDK8设计出CompletableFuture。CompletableFuture 提供了一种观察者模式类似的机制，可以让任务执行完成后通知监听的一方。
  */
+@Slf4j
 public class FutureTest {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         ExecutorService executorService = Executors.newFixedThreadPool(10);
@@ -31,7 +34,9 @@ public class FutureTest {
         FutureTask<MedalInfo> medalInfoFutureTask = new FutureTask<>(() -> medalService.getMedalInfo(userId));
         executorService.submit(medalInfoFutureTask);
         UserInfo userInfo = userInfoFutureTask.get();//获取个人信息结果//阻塞
+        log.info("????");
         MedalInfo medalInfo = medalInfoFutureTask.get();//获取勋章信息结果
+        log.info("!!!");
         System.out.println("总共用时" + (System.currentTimeMillis() - startTime) + "ms");
         executorService.shutdown();
     }

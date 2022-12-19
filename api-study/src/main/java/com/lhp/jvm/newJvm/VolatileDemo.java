@@ -29,8 +29,8 @@ public class VolatileDemo {
             }
             // 不加 volatile  并不会 通知其他线程 ，其他线程获得的值还是 0
             myData.addTo100();
-            System.out.println(Thread.currentThread().getName()+"\t 修改a 的值为 \t"+myData.a);
-        }, "T1").start();
+            System.out.println(Thread.currentThread().getName() + "\t 修改a 的值为 \t" + myData.a);
+        }, "LockSupportDemo4").start();
         //因为 线程T1  修改了 a的 值 但是 main线程并不知情 所以会在这里空转
         while (myData.a==0){
 
