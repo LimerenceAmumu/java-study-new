@@ -20,7 +20,7 @@ public class MyThreadPoolDemo {
                 5,// 最大线程数,阻塞队列满了的时候会判断线程数是否已经达到max,小于的话增加工作线程立即处理该任务(阻塞队列中的任务继续等待),否则执行拒绝策略
                 30L,// 空闲线程存活时间
                 TimeUnit.SECONDS,
-                new ArrayBlockingQueue<>(5),
+                new ArrayBlockingQueue<>(6),
                 new MyThreadFactory(),//主要用来 线程命名
                 //抛异常的拒绝策略RejectedExecutionException
                 //new ThreadPoolExecutor.AbortPolicy()
@@ -38,7 +38,7 @@ public class MyThreadPoolDemo {
             //   TimeUnit.SECONDS.sleep(20);
 
             //模拟
-            for (int i = 1; i <= 10; i++) {
+            for (int i = 1; i <= 11; i++) {
                 int finalI = i;
                 threadPoolExecutor.execute(() -> {
                     System.out.println(Thread.currentThread().getName() + "处理中---index:" + finalI);
@@ -56,7 +56,7 @@ public class MyThreadPoolDemo {
         }
 
         //cpu核心数
-        System.out.println(Runtime.getRuntime().availableProcessors());
+        //  System.out.println(Runtime.getRuntime().availableProcessors());
 
     }
 

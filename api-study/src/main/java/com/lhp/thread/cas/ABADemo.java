@@ -24,7 +24,6 @@ public class ABADemo {
      *  两个线程
      */
     static public void testNormal(){
-
         new Thread(() -> {
             atomicInteger.compareAndSet(10, 11);
             atomicInteger.compareAndSet(11, 10);

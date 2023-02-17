@@ -28,7 +28,7 @@ public class CompletableFutureTest2 {
         //supplyAsync的使用  支持返回值
         CompletableFuture<String> supplyFuture = CompletableFuture.supplyAsync(() -> {
             System.out.print("supply========");
-            return "--------";
+            return "我是返回值";
         }, executor);
         //runAsync的future没有返回值，输出null
 

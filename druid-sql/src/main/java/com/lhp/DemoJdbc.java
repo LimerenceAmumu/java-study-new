@@ -34,6 +34,33 @@ public class DemoJdbc {
         return dataSource;
     }
 
+
+    private static List<FieldInfo> getFieldInfosBySql(String schema, Connection connection, String sql) throws SQLException {
+        Statement statement = connection.createStatement();
+        connection.setSchema(schema);
+        ResultSet rs = statement.executeQuery(sql);
+        ResultSetMetaData rsMetaData = rs.getMetaData();
+        for (int i = 0, len = rsMetaData.getColumnCount(); i < len; i++) {
+
+            String columnName = rsMetaData.getColumnName(i + 1);
+            int columnType = rsMetaData.getColumnType(i + 1);
+
+            JDBCType jdbcType = JDBCType.valueOf(columnType);
+            String columnTypeName = rsMetaData.getColumnTypeName(i + 1);
+            if ("bigserial".equals(columnTypeName)) {
+                columnTypeName = "int8";
+            }
+            String columnLabel = rsMetaData.getColumnLabel(i + 1);
+            rsMetaData.
+                    System.out.println("columnLabel = " + columnLabel);
+            System.out.println("columnName = " + columnName);
+            System.out.println("columnTypeName = " + columnTypeName);
+
+            System.out.println("=============");
+        }
+        return null;
+    }
+
     private static List<FieldInfo> getFieldInfos(String schema, String table, DatabaseMetaData metaData, Connection connection) throws SQLException {
         // 获取表列名
         ResultSet columnSet = metaData.getColumns(schema, null, table, null);
@@ -92,6 +119,16 @@ public class DemoJdbc {
         fieldInfos.sort(Comparator.comparing(FieldInfo::getCode));
 
         return fieldInfos;
+    }
+
+    @SneakyThrows
+    @Test
+    public void test2() {
+        HikariDataSource dataSource = getDataSource();
+        Connection connection = dataSource.getConnection();
+        DatabaseMetaData metaData = connection.getMetaData();
+
+        List<FieldInfo> fieldInfos = getFieldInfosBySql("public", connection, "select ods_asset_blood_lineage.*,ods_asset_data_asset.* from ods_asset_data_asset,ods_asset_blood_lineage where 1=2");
     }
 
     @Test

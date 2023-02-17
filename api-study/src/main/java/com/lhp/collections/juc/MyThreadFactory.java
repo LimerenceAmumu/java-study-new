@@ -19,7 +19,7 @@ public class MyThreadFactory implements ThreadFactory {
         SecurityManager s = System.getSecurityManager();
         group = (s != null) ? s.getThreadGroup() :
                 Thread.currentThread().getThreadGroup();
-        namePrefix = "MyThreadFactory-pool-" +
+        namePrefix = "MyThreadFactory-pool-" + //线程前缀
                 poolNumber.getAndIncrement() +
                 "-thread-";
     }

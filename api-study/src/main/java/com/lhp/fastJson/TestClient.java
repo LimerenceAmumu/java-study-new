@@ -100,7 +100,6 @@ public class TestClient {
 
     @Test
     public void test22() {
-
         ArrayList<String> titleEvent = new ArrayList<>();
         titleEvent.add("[\"专题\", \"药选址\", \"审批阶段\", \"产品动态\"]");
         titleEvent.add("[\"企业动态\", \"媒体评议\", \"专题\", \"药选址\", \"审批阶段\", \"产品动态\"]");

@@ -37,6 +37,7 @@ public class CompletableFutureTest3 {
 
 //        System.out.println(orgFuture.get());
         System.out.println(thenRunFuture.get());
+        System.out.println(thenRunFuture.join());
     }
 
 }

@@ -4,7 +4,9 @@ import org.junit.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -67,6 +69,25 @@ public class DateUtil {
             result.add(nowStr);
         }
         System.out.println("result = " + result);
+    }
+
+
+    /**
+     * 计算日期间隔
+     */
+    @Test
+    public void test33() {
+        LocalDateTime now = LocalDateTime.now();
+
+        LocalDateTime localDateTime = now.minusHours(25);
+        LocalDateTime localDateTime2 = now.plusDays(25);
+
+
+        long l = Duration.between(now, localDateTime).toDays();
+        System.out.println("l = " + l);
+
+        long l2 = Duration.between(now, localDateTime2).toDays();
+        System.out.println("l2 = " + l2);
     }
 
 
