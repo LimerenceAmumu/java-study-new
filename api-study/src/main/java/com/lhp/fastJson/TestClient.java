@@ -40,6 +40,13 @@ public class TestClient {
     }
 
 
+    @Test
+    public void testReg() {
+        String dd = "[sensitive-task]-[1636663822732685313]-1-20230320140621726";
+
+    }
+
+
     /**
      * java 集合转 json 数组
      */

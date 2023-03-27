@@ -75,13 +75,13 @@ public class ProducterCustomerDemo_BlockQueue {
     public static void main(String[] args) throws InterruptedException {
         MyResous myResous = new MyResous(new ArrayBlockingQueue<String>(5));
 
-        new Thread(()->{
+        new Thread(() -> {
             try {
                 myResous.add();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        },"Pro").start();
+        }, "Product").start();
 
 
         new Thread(()->{

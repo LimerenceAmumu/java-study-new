@@ -263,4 +263,27 @@ public class StringTestClient {
         Boolean.valueOf(true);
     }
 
+
+    @Test
+    public void testHash() {
+        String a = "www.baidu.com";
+        String b = "www.souhu.com";
+        String c = "www.cccc.com";
+        String d = "www.dddd.com";
+        String e = "www.dddd.com";
+        String f = "www.dddd.com";
+        String g = "www.dddd.com";
+        String h = "www.baidu.com";
+        String i = "www.iii.com";
+
+        List<String> urls = Arrays.asList(a, b, c, d, e, f, g, h, i);
+        urls.stream().forEach(
+                u -> System.out.println(
+                        "u:" + u + "===" + u.hashCode() % 3
+                )
+        );
+
+
+    }
+
 }

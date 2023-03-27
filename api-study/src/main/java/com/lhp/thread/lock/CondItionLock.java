@@ -19,8 +19,9 @@ class MyRes {
     Condition condition3 = lock.newCondition();
 
     public void print5() {
+
+        lock.lock();
         try {
-            lock.lock();
             //判断
             while (num != 1) {
                 condition1.await();
@@ -41,9 +42,8 @@ class MyRes {
     }
 
     public void print10() {
-
+        lock.lock();
         try {
-            lock.lock();
             //判断
             while (num != 2) {
                 condition2.await();
@@ -65,9 +65,8 @@ class MyRes {
     }
 
     public void print15() {
-
+        lock.lock();
         try {
-            lock.lock();
             //判断
             while (num != 3) {
                 condition3.await();
