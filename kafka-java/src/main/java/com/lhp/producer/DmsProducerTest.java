@@ -38,8 +38,11 @@ public class DmsProducerTest {
     @Test
     public void testnull() throws UnsupportedEncodingException {
 
-        String aaa = "demo : [  {   /// /// aaaaa  --- /}]";
-        String ss = java.util.Base64.getEncoder().encodeToString(aaa.getBytes("utf-8"));
+        String aaa = "{\"appName\": \"1637733752374734849\",\"colRegexMap\": [\"db[.]stg[:]tb[.]stg_wzw_test[:]colName[.]编号[:]colCode[.]collect_id[:]regex[.]b{3,6}[:]task_id[.]1637733752374734849[:]table_id[.]1584495349898649601\"],\"colSqlMap\": [\"db[.]stg[:]tb[.]stg_wzw_test[:]colName[.]消息[:]colCode[.]message[:]regex[.][\\u4e00-\\u9fa5][:]task_id[.]1637733752374734849[:]table_id[.]1584495349898649601\"],\"id\": \"1637733752374734849\",\"kafkaServers\": \"192.168.110.43:9092,192.168.110.41:9092,192.168.110.42:9092\",\"sourceDbTableMap\": \"stg:stg_wzw_test\",\"taskNo\": \"wzw_Test\",\"topic\": \"SENSITIVE_TASK_RESULT_TOPIC\"}";
+        String ss = java.util.Base64.getEncoder().encodeToString(aaa.getBytes());
+
+        System.out.println("ss = " + ss);
+
         String encode = Base64.encode(aaa);
 
 

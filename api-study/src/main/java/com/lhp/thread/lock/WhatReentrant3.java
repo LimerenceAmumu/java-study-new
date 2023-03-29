@@ -15,14 +15,14 @@ public class WhatReentrant3 {
 //				} catch (InterruptedException e) {
 //					e.printStackTrace();
 //				}
+                lock.lock();
                 try {
-                    lock.lock();
                     System.out.println("第1次获取锁，这个锁是：" + lock);
 
                     int index = 1;
                     while (true) {
+                        lock.lock();
                         try {
-                            lock.lock();
                             System.out.println("第" + (++index) + "次获取锁，这个锁是：" + lock);
 
                             try {
