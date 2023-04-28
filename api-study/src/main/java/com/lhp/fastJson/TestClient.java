@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONPath;
 import com.lhp.bean.Apple;
+import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
 import java.io.File;
@@ -70,6 +71,20 @@ public class TestClient {
         System.out.println("jsonString3 = " + jsonString2);
 
     }
+
+
+    @Test
+    public void tests22() {
+        String s = FileUtils.byteCountToDisplaySize(1152921504606846976L);
+        System.out.println("s = " + s);
+
+    }
+
+    @Test
+    public void testdqweq() {
+        List<Object> objects = Arrays.asList(null);
+    }
+
 
     /**
      * json 转 List
