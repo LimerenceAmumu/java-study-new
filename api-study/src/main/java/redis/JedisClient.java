@@ -1,5 +1,6 @@
 package redis;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import org.junit.Test;
@@ -39,6 +40,42 @@ public class JedisClient {
 
     }
 
+
+    @Test
+    public void test() {
+        String json = "     {\"query\": {\"match_all\": {}}}  ";
+
+        String s = json.replaceAll("\\{", " {\n")
+                .replaceAll("}", " }\n");
+        System.out.println("s = " + s);
+
+        String res = "{\n" +
+                " \"query\": { \n" +
+                "        \"match_all\": {\n" +
+                "        }\n" +
+                "    }\n" +
+                "} ";
+
+        System.out.println("res = " + res);
+
+    }
+
+
+    @Test
+    public void testdas() {
+
+
+        String jsonString = "{\"_index\":\"book_shop\",\"_type\":\"it_book\",\"_id\":\"1\",\"_score\":1.0," +
+                "\"_source\":{\"name\": \"Java编程思想（第4版）\",\"author\": \"[美] Bruce Eckel\",\"category\": \"编程语言\"," +
+                "\"price\": 109.0,\"publisher\": \"机械工业出版社\",\"date\": \"2007-06-01\",\"tags\": [ \"Java\", \"编程语言\" ]}}";
+
+        System.out.println("jsonString = " + jsonString);
+        JSONObject object = JSONObject.parseObject(jsonString);
+        String pretty = JSON.toJSONString(object, SerializerFeature.PrettyFormat, SerializerFeature.WriteMapNullValue,
+                SerializerFeature.WriteDateUseDateFormat);
+
+        System.out.println(pretty);
+    }
 
     @Test
     public void testdd() {

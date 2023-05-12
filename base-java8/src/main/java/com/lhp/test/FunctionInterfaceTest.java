@@ -1,13 +1,14 @@
 package com.lhp.test;
 
+import cn.hutool.core.util.CharsetUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.crypto.SecureUtil;
+import cn.hutool.crypto.symmetric.SymmetricAlgorithm;
 import cn.hutool.crypto.symmetric.SymmetricCrypto;
 import com.lhp.bean.Apple;
-import com.xiaoleilu.hutool.crypto.SecureUtil;
-import com.xiaoleilu.hutool.crypto.symmetric.SymmetricAlgorithm;
-import com.xiaoleilu.hutool.util.CharsetUtil;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Test;
+
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -79,10 +80,29 @@ public class FunctionInterfaceTest {
         apples.add(new Apple("yellow", 80, "12"));
         apples.add(new Apple("black", null, "12"));
         apples.add(new Apple("green", 200, "30"));
-        apples.add(new Apple("orign", 110, "12"));
+        apples.add(new Apple("origin", 110, "12"));
+        apples.add(new Apple("purple", 110, "12"));
         apples.add(new Apple("red", 150, "12"));
         apples.add(new Apple("red", 60, "12"));
+    }
 
+    @Test
+    public void test1231() {
+        init();
+        ArrayList<Apple> head = new ArrayList<>();
+        //要根据此顺序排序的
+        List<String> sortKey = Arrays.asList("green", "yellow", "black", "origin");
+        for (Apple apple : apples) {
+            if (sortKey.contains(apple.getColor())) {
+                head.add(apple);
+            }
+        }
+        apples.removeAll(head);
+        apples.addAll(0, head);
+        String sortKeyStr = head.stream().map(Apple::getColor).collect(Collectors.joining(","));
+
+
+        System.out.println("apples = " + apples);
     }
 
     /**
