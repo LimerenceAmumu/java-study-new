@@ -1,9 +1,9 @@
 package com.lhp.io.network;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import lombok.SneakyThrows;
+import org.junit.Test;
+
+import java.io.*;
 import java.net.Socket;
 
 /*
@@ -51,5 +51,16 @@ public class TCPClient {
         //8.释放资源(FileInputStream,Socket)
         fis.close();
         socket.close();
+
     }
+
+    @SneakyThrows
+    @Test
+    public void test() {
+        File file = new File("/");
+        FileInputStream fileInput = new FileInputStream(file);
+        InputStreamReader inputStreamReader = new InputStreamReader(fileInput);
+
+    }
+
 }

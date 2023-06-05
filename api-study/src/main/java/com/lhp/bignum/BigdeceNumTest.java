@@ -5,8 +5,7 @@ import org.junit.Test;
 import java.math.BigDecimal;
 
 /**
- *
- * @Description:
+ * @Description: BigDecimal api测试
  * @author: lihp
  * @date: 2021/10/12 13:59
  */

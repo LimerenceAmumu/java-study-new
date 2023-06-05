@@ -9,7 +9,7 @@ import org.junit.Test;
  */
 public class ClassLoaderTestClient {
     /**
-     * 三种获取到的是同一个
+     * 三种获取到的是同一个 Launcher$AppClassLoader
      *
      * @throws ClassNotFoundException
      */
@@ -28,16 +28,6 @@ public class ClassLoaderTestClient {
         System.out.println("systemClassLoader = " + systemClassLoader);//sun.misc.Launcher$AppClassLoader@18b4aac2
     }
 
-    @Test
-    public void testsss() {
-        String ss = "SELECT * FROM \n (SELECT id,acce_no,drug_type,\n";
-        ss = ss.replaceAll(" ", "").replaceAll("\n", "");
-
-        String trim1 = ss.replaceAll("\n", "");
-        System.out.println("trim1 = " + trim1);
-        String trim = ss.trim();
-        System.out.println("trim = " + trim);
-    }
 
 
     /**
@@ -76,9 +66,5 @@ public class ClassLoaderTestClient {
         System.out.println("property1 = " + property1);
     }
 
-    @Test
-    public void test4() {
-        String ss = "ssss";
-    }
 
 }

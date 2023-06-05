@@ -4,7 +4,7 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * @Description:
+ * @Description: 自定义ThreadFactory
  * @author: lihp
  * @date: 2022/4/24 16:12
  */

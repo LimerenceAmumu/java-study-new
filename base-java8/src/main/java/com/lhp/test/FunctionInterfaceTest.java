@@ -1,7 +1,7 @@
 package com.lhp.test;
 
+import cn.hutool.core.codec.Base64;
 import cn.hutool.core.util.CharsetUtil;
-import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.symmetric.SymmetricAlgorithm;
 import cn.hutool.crypto.symmetric.SymmetricCrypto;
@@ -9,6 +9,7 @@ import com.lhp.bean.Apple;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.Test;
 
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -86,6 +87,9 @@ public class FunctionInterfaceTest {
         apples.add(new Apple("red", 60, "12"));
     }
 
+    /**
+     * 指定字段排序
+     */
     @Test
     public void test1231() {
         init();
@@ -135,16 +139,6 @@ public class FunctionInterfaceTest {
 
 
     @Test
-    public void testdd(){
-
-        String s1 = StrUtil.unWrap(",AS,D", ",", ",");
-        String a=",ASD";
-        String substring = a.substring(a.indexOf(",")+1);
-        System.out.println("s1 = " + s1);
-
-    }
-
-    @Test
     public void testCode(){
 
         String nihao = DigestUtils.sha1Hex("nihao");
@@ -161,9 +155,9 @@ public class FunctionInterfaceTest {
 
 
         //加密
-       String encrypt = aes.encryptHex(content);
+        String encrypt = aes.encryptHex(content);
         //解密
-       String str = aes.decryptStr(encrypt);
+        String str = aes.decryptStr(encrypt);
 
         //加密16进制表示
         String encryptHex = aes.encryptHex(content);
@@ -174,4 +168,47 @@ public class FunctionInterfaceTest {
 
 
     }
+
+
+    @Test
+    public void test666() {
+
+
+        String source = "{\n" +
+                "  \"taskID\":\"11111\",\n" +
+                "  \"columnMap\":\"id:id,name:name\",\n" +
+                "  \"source\":{\n" +
+                "    \"type\":\"jdbc\",\n" +
+                "    \"config\":{\n" +
+                "      \"jdbcUrl\":\"jdbc:mysql://192.168.110.40:3306/test\",\n" +
+                "      \"username\":\"root\",\n" +
+                "      \"password\":\"Supcon_21\",\n" +
+                "      \"query\":\"select * from cjtest\",\n" +
+                "      \"offsetColumns\":\"id\",\n" +
+                "      \"sourceColumns\":\"id:string,name:string\"\n" +
+                "    }\n" +
+                "  },\n" +
+                "  \"sink\":{\n" +
+                "    \"type\":\"jdbc\",\n" +
+                "    \"config\":{\n" +
+                "      \"jdbcUrl\":\"jdbc:dm://192.168.110.40:5236/SYSDBA\",\n" +
+                "      \"username\":\"SYSDBA\",\n" +
+                "      \"password\":\"SYSDBA\",\n" +
+                "      \"targetTable\":\"SYSDBA.CJTEST\",\n" +
+                "      \"writeMode\":\"append\",\n" +
+                "      \"mergeKeys\":\"id\"\n" +
+                "    }\n" +
+                "  }\n" +
+                "}";
+
+        String encode = Base64.encode(source, StandardCharsets.UTF_8);
+
+
+        System.out.println("encode = " + encode);
+
+
+        String s = new String(Base64.decode(encode), StandardCharsets.UTF_8);
+        System.out.println("s = " + s);
+    }
+
 }

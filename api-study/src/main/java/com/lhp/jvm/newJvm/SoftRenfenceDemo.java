@@ -13,8 +13,8 @@ public class SoftRenfenceDemo {
     public static void main(String[] args) {
         showInitialMemoryInfo();
 
-        //softReference();//演示软引用
-        softReferenceOverHeadLimit();//软引用溢出
+        softReference();//演示软引用
+//        softReferenceOverHeadLimit();//软引用溢出
     }
 
     /**

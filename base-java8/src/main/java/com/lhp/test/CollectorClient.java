@@ -90,13 +90,9 @@ public class CollectorClient {
         System.out.println("dish = " + dish);
         //2
         Comparator<Dish> maxbyComparator = Comparator.comparing(Dish::getCalories);
-        menu.stream().collect(maxBy(maxbyComparator));
+        Optional<Dish> collect = menu.stream().collect(maxBy(maxbyComparator));
     }
 
-    @Test
-    public void test22() {
-        System.out.println("Runtime.getRuntime().availableProcessors() = " + Runtime.getRuntime().availableProcessors());
-    }
 
     //汇总  平均 最大最小
     @Test
