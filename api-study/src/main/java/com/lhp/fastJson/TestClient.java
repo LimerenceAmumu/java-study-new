@@ -47,6 +47,17 @@ public class TestClient {
 
     }
 
+    @Test
+    public void testReplace() {
+        String dd = "\\d++++++\\d";
+        System.out.println("dd = " + dd);
+
+        String replace = dd.replace("\\", "\\\\");
+
+        System.out.println("replace = " + replace);
+
+
+    }
 
     /**
      * java 集合转 json 数组

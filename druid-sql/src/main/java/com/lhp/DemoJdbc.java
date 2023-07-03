@@ -51,8 +51,8 @@ public class DemoJdbc {
                 columnTypeName = "int8";
             }
             String columnLabel = rsMetaData.getColumnLabel(i + 1);
-            rsMetaData.
-                    System.out.println("columnLabel = " + columnLabel);
+//            rsMetaData.
+//                    System.out.println("columnLabel = " + columnLabel);
             System.out.println("columnName = " + columnName);
             System.out.println("columnTypeName = " + columnTypeName);
 

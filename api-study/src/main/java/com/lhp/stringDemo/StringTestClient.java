@@ -2,6 +2,7 @@ package com.lhp.stringDemo;
 
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.StrUtil;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.base.Joiner;
 import com.lhp.DateDemo.DateUtil;
@@ -286,4 +287,38 @@ public class StringTestClient {
 
     }
 
+    public static void sortMergeKeys(FirestoneTaskVO taskVO) {
+        String mergeKeys = taskVO.getMergeKeys();
+        if (StrUtil.isNotEmpty(taskVO.getMergeKeys())) {
+            ArrayList<MappingFiledVO> head = new ArrayList<>();
+
+            String[] split = mergeKeys.split(",");
+            List<String> mergekeys = Arrays.asList(split);
+            String fieldMapping = taskVO.getFieldMapping();
+            List<MappingFiledVO> mappingFiledVOS = JSONObject.parseArray(fieldMapping, MappingFiledVO.class);
+            for (MappingFiledVO mappingFiledVO : mappingFiledVOS) {
+                if (mergekeys.contains(mappingFiledVO.getTargetFiled())) {
+                    head.add(mappingFiledVO);
+                }
+            }
+            mappingFiledVOS.removeAll(head);
+
+            mappingFiledVOS.addAll(0, head);
+            String fields = JSONArray.toJSONString(mappingFiledVOS);
+
+            taskVO.setFieldMapping(fields);
+
+            String collect = head.stream().map(MappingFiledVO::getTargetFiled).collect(Collectors.joining(","));
+            taskVO.setMergeKeys(collect);
+        }
+    }
+
+    @Test
+    public void testsort() {
+
+        String columnType = "SMALLINT(5)";
+        String[] type = columnType.split("\\(");
+        String finalType = type[0];
+        System.out.println("finalType = " + finalType);
+    }
 }
