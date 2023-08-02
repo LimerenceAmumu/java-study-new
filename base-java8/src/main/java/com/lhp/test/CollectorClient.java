@@ -8,6 +8,7 @@ import com.lhp.bean.Transaction;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 import static java.util.stream.Collectors.*;
@@ -91,6 +92,16 @@ public class CollectorClient {
         //2
         Comparator<Dish> maxbyComparator = Comparator.comparing(Dish::getCalories);
         Optional<Dish> collect = menu.stream().collect(maxBy(maxbyComparator));
+    }
+
+
+    @Test
+    public void test002() {
+
+
+        while (true) {
+            System.out.println(LocalDateTime.now());
+        }
     }
 
 

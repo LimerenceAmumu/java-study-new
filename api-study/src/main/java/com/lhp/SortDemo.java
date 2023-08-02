@@ -42,6 +42,15 @@ public class SortDemo {
     public static int getFieldIndex(String field) {
         List<String> fields = Arrays.asList("name", "age", "address", "id");
         return fields.indexOf(field);
+
+    }
+
+    @Test
+    public void test() {
+        HashMap<String, Integer> stringIntegerHashMap = new HashMap<>();
+        stringIntegerHashMap.put("a.b", 1);
+
+        System.out.println(stringIntegerHashMap.get("a.b"));
     }
 
     /**
