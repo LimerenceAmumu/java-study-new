@@ -10,6 +10,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author : lihp
@@ -30,10 +31,48 @@ public class DemoJdbc {
         dataSource.setDriverClassName(driver);
         dataSource.setUsername(username);
         dataSource.setPassword(pwd);
-        dataSource.setConnectionTimeout(Duration.ofSeconds(2000).toMillis());
+        dataSource.setConnectionTimeout(Duration.ofSeconds(10).toMillis());
         return dataSource;
     }
 
+    public static void main(String[] args) throws SQLException {
+        HikariDataSource dataSource = getDataSource();
+
+//        for (int i = 0; i < 5; i++) {
+        Connection connection = dataSource.getConnection();
+//            System.out.println("connection = " + connection);
+//        }
+        dataSource = null;
+        //手动创建一些大对象
+        ArrayList<Object> objects = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            objects.add(new BigData());
+        }
+        System.gc();
+        try {
+            TimeUnit.SECONDS.sleep(20);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+        System.out.println("======");
+
+
+        while (true) {
+            try {
+                TimeUnit.SECONDS.sleep(1L);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(connection.isClosed());
+
+        }
+    }
+
+    static class BigData {
+        byte[] data = new byte[50 * 1024 * 1024];
+    }
 
     private static List<FieldInfo> getFieldInfosBySql(String schema, Connection connection, String sql) throws SQLException {
         Statement statement = connection.createStatement();
